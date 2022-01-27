@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+    <style>
+        .red{
+            height: 200px;
+            width: 100%;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container red mt-5 pt-5">
+        <br> <br> 
+        Hello {{ request.user.username}}
+    </div>
+</body>
+
+{% endblock %}

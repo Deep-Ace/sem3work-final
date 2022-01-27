@@ -1,0 +1,55 @@
+{% load static %}
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 fixed-top">
+    <div class="container">
+    <a href="{% url 'home' %}">
+        <img src="{% static 'img/logo.png' %}" alt="" class="logo">
+    </a>
+    
+    <input class="mr-0 ml-5 rounded" type="search" placeholder="Search">
+    <a href="#" style="color: #fff;"><i class="fas fa-search"></i></a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i id="bar" class="fas fa-bars"></i></span>
+    </button>
+
+    <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            
+            <li class="nav-item">
+                <a class="nav-link active" href="{% url 'home' %}">Home </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'store' %}">Store</a>
+            </li>
+
+            {% if not request.user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'userLogin' %}">Login</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-cart-arrow-down"></i></a>
+            </li>
+            <li class="nav-item dropleft">
+                <a class="nav-link" href="#" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a style="cursor: default;" class="dropdown-item disabled" href="#">Welcome, {{ request.user.username }}</a>
+                    <a class="dropdown-item" href="{% url 'dashboard' %}">Dash Board</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Sign Out</a>
+                </div>
+            </li>
+            {% endif %}
+        </ul>
+        
+    </div>
+</div>
+</nav>

@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<!-- Home Page Lading Section -->
+<section id="home">
+    <div class="container">
+        <h5>NEW ARRIVALS</h5>
+        <h1><span>Best Price</span> This Year</h1>
+        <p>Hello everyone this is the killer project <br>
+            Welcome to my world</p>
+        <a href="#">Shop Now</a>
+    </div>
+</section>
+<!-- Featured Products -->
+<section id="featured">
+    <div class="products">
+        <div class="container-fluid">
+            <div class="product-items">
+                <!-- single product -->
+                <div class="product">
+                    <div class="product-content">
+                        <div class="product-img">
+                            <img src="{% static 'img/img1.png' %}" alt="product image">
+                        </div>
+                        <div class="product-btns">
+                            <button type="button" class="btn-cart"> Add to Cart
+                                <span><i class="fas fa-plus"></i></span>
+                            </button>
+                            <button type="button" class="btn-buy"> Buy Now
+                                <span><i class="fas fa-shopping-cart"></i></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <div class="product-info-top">
+                            <h2 class="sm-title">Seeds</h2>
+                        </div>
+                        <a href="#" class="product-name">Apple Seeds</a>
+                        <p class="product-price">Rs 50</p>
+                        <p class="product-price">Rs 40</p>
+                    </div>
+                    <div class="off-info">
+                        <h2 class="sm-title">25% off</h2>
+                    </div>
+                </div>
+                <!-- end -->
+                <!-- single product -->
+                <div class="product">
+                    <div class="product-content">
+                        <div class="product-img">
+                            <img src="{% static 'img/img1.png' %}" alt="product image">
+                        </div>
+                        <div class="product-btns">
+                            <button type="button" class="btn-cart"> add to cart
+                                <span><i class="fas fa-plus"></i></span>
+                            </button>
+                            <button type="button" class="btn-buy"> buy now
+                                <span><i class="fas fa-shopping-cart"></i></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <div class="product-info-top">
+                            <h2 class="sm-title">Seeds</h2>
+                        </div>
+                        <a href="#" class="product-name">Apple Seeds</a>
+                        <p class="product-price">Rs 50</p>
+                        <p class="product-price">Rs 40</p>
+                    </div>
+                    <div class="off-info">
+                        <h2 class="sm-title">25% off</h2>
+                    </div>
+                </div>
+                <!-- end -->
+                <!-- single product -->
+                <div class="product">
+                    <div class="product-content">
+                        <div class="product-img">
+                            <img src="{% static 'img/img1.png' %}" alt="product image">
+                        </div>
+                        <div class="product-btns">
+                            <button type="button" class="btn-cart"> add to cart
+                                <span><i class="fas fa-plus"></i></span>
+                            </button>
+                            <button type="button" class="btn-buy"> buy now
+                                <span><i class="fas fa-shopping-cart"></i></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <div class="product-info-top">
+                            <h2 class="sm-title">Seeds</h2>
+                        </div>
+                        <a href="#" class="product-name">Apple Seeds</a>
+                        <p class="product-price">Rs 50</p>
+                        <p class="product-price">Rs 40</p>
+                    </div>
+                    <div class="off-info">
+                        <h2 class="sm-title">25% off</h2>
+                    </div>
+                </div>
+                <!-- end -->
+                <!-- single product -->
+                <div class="product">
+                    <div class="product-content">
+                        <div class="product-img">
+                            <img src="{% static 'img/img1.png' %}" alt="product image">
+                        </div>
+                        <div class="product-btns">
+                            <button type="button" class="btn-cart"> add to cart
+                                <span><i class="fas fa-plus"></i></span>
+                            </button>
+                            <button type="button" class="btn-buy"> buy now
+                                <span><i class="fas fa-shopping-cart"></i></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="product-info">
+                        <div class="product-info-top">
+                            <h2 class="sm-title">Seeds</h2>
+                        </div>
+                        <a href="#" class="product-name">Apple Seeds</a>
+                        <p class="product-price">Rs 50</p>
+                        <p class="product-price">Rs 40</p>
+                    </div>
+                    <div class="off-info">
+                        <h2 class="sm-title">25% off</h2>
+                    </div>
+                </div>
+                <!-- end -->
+
+                <!-- End of First row -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- BANNER -->
+<section id="banner">
+    <div class="container">
+        <h4>MID SEASON'S SALE</h4>
+        <h1>Autumn Collection<br>UP TP 25% OFF</h1>
+        <a href="#" class="text-uppercase">Shop Now</a>
+
+    </div>
+</section>
+<section id="section-form" class="py-5">
+    <div class="container">
+        <form method="post" action="#" class="contact-form">
+            <h1 class="d-flex justify-content-center">Contact Us</h1>
+            <div class="row my-3">
+                <div class="col-lg-4 col-md-6 col-4">
+                    <label for="name">Name</label>
+                </div>
+                <div class="col-lg-6 col-md-6 col-8">
+                    <input type="text" name="name" id="name" placeholder="Your Name" required>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-lg-4 col-md-6 col-4">
+                    <label for="email">Email</label>
+                </div>
+                <div class="col-lg-6 col-md-6 col-8">
+                    <input type="email" name="email" id="email" placeholder="Your Email" required>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-lg-4 col-md-6 col-4">
+                    <label for="find-us">How did you find us?</label>
+                </div>
+                <div class="col-lg-6 col-md-6 col-8">
+                    <select name="find-us" id="find-us">
+                        <option value="friends" selected>Friends</option>
+                        <option value="search">Search Engine</option>
+                        <option value="ad">Advertisement</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-lg-4 col-md-6 col-4">
+                    <label>Drop us a line</label>
+                </div>
+                <div class="col-lg-6 col-md-6 col-8">
+                    <textarea name="message" placeholder="Your Message"></textarea>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-lg-4 col-md-6 col-4">
+                    <label>&nbsp;</label>
+                </div>
+                <div class="col-lg-8 col-md-6 col-8">
+                    <a href="#" class="text-uppercase">Send It!</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<a id="page_scroller" href="#top">
+    <i>top</i>
+</a>
+
+
+
+
+
+{% endblock %}
