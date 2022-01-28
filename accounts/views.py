@@ -66,12 +66,22 @@ def userRegister(request):
 def userDashboard(request):
     return render(request, 'accounts/userDashboard.html')
 
-
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
         messages.success(request, 'You are successfully logged out.')
         return redirect('userLogin') 
+    return redirect('home')
+
+def logoutadmin(request):
+    if request.method == 'POST':
+        if request.user.is_superuser:
+            auth.logout(request)
+            messages.success(request, 'You are successfully logged out.')
+            return redirect('adminlogin')
+        # else:
+        #     messages.success(request, 'You are successfully logged out.')
+        #     return redirect('userLogin') 
     return redirect('home')
 
 def resetPass(request):
