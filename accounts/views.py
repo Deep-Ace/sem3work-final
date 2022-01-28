@@ -1,15 +1,18 @@
 from django.shortcuts import render, redirect
+from . import forms, models
 from django.contrib import messages, auth
 from django.contrib.auth.models import User, Group
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect,HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse
 # Create your views here.
 
-#for showing login button for admin(by sumit)
+# for showing login button for admin(by sumit)
 # def adminclick_view(request):
 #     if request.user.is_authenticated:
 #         return HttpResponseRedirect('afterlogin')
 #     return HttpResponseRedirect('adminlogin')
+
 
 def userLogin(request):
     if request.method == 'POST':
@@ -50,9 +53,11 @@ def userRegister(request):
                     # messages.success(request, "You are now logged in.")
                     # return redirect('dashboard')
                     user.save()
-                    my_customer_group = Group.objects.get_or_create(name='CUSTOMER')
+                    my_customer_group = Group.objects.get_or_create(
+                        name='CUSTOMER')
                     my_customer_group[0].user_set.add(user)
-                    messages.success(request, 'You are registered successfully')
+                    messages.success(
+                        request, 'You are registered successfully')
                     return redirect('userRegister')
 
         else:
@@ -62,16 +67,20 @@ def userRegister(request):
         return render(request, 'accounts/userRegister.html')
 
 # for checking user is user
+
+
 @login_required(login_url='userLogin')
 def userDashboard(request):
     return render(request, 'accounts/userDashboard.html')
+
 
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
         messages.success(request, 'You are successfully logged out.')
-        return redirect('userLogin') 
+        return redirect('userLogin')
     return redirect('home')
+
 
 def logoutadmin(request):
     if request.method == 'POST':
@@ -81,8 +90,9 @@ def logoutadmin(request):
             return redirect('adminlogin')
         # else:
         #     messages.success(request, 'You are successfully logged out.')
-        #     return redirect('userLogin') 
+        #     return redirect('userLogin')
     return redirect('home')
+
 
 def resetPass(request):
     return render(request, 'accounts/resetPass.html')
@@ -121,10 +131,58 @@ def afterlogin_view(request):
 @login_required(login_url='afterlogin')
 def adminDashboard(request):
     if request.user.is_superuser:
-        return render(request, 'accounts/adminDashboard.html')
+        User = get_user_model()
+        usercount = User.objects.all().count()
+        productcount = models.Product.objects.all().count()
+
+        mydict = {
+            'usercount': usercount,
+            'productcount': productcount,
+        }
+        return render(request, 'accounts/adminDashboard.html', mydict)
     else:
         messages.error(request, "Invalid login credentials")
         return redirect('adminlogin')
     # return render(request, 'accounts/adminDashboard.html')
 
+# admin view the total product in the dashbaord
 
+
+@login_required(login_url='adminlogin')
+def admin_products_view(request):
+    products = models.Product.objects.all()
+    return render(request, 'admincontrol/admin_products.html', {'products': products})
+
+# admin add product by clicking on floating button
+
+
+@login_required(login_url='adminlogin')
+def admin_add_product_view(request):
+    products=models.Product.objects.all()
+    productForm = forms.ProductForm()
+    if request.method == 'POST':
+        productForm = forms.ProductForm(request.POST, request.FILES)
+        if productForm.is_valid():
+            productForm.save()
+        return HttpResponseRedirect('admin-products')
+    return render(request, 'admincontrol/admin_add_products.html', {'productForm': productForm, 'products':products})
+
+
+@login_required(login_url='adminlogin')
+def delete_product_view(request, pk):
+    products = models.Product.objects.get(id=pk)
+    products.delete()
+    return redirect('admin-products')
+
+
+@login_required(login_url='adminlogin')
+def update_product_view(request, pk):
+    products = models.Product.objects.get(id=pk)
+    productForm = forms.ProductForm(instance=products)
+    if request.method == 'POST':
+        productForm = forms.ProductForm(
+            request.POST, request.FILES, instance=products)
+        if productForm.is_valid():
+            productForm.save()
+            return redirect('admin-products')
+    return render(request, 'admincontrol/admin_update_product.html', {'productForm': productForm, 'products':products})
