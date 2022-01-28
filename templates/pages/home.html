@@ -14,20 +14,6 @@
             font-family: 'Cairo', Verdana, Geneva, Tahoma, sans-serif;
         }
 
-
-
-        /* section{
-        background: url(f1.png);
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        background-position: center;
-        background-size: cover;
-        top: 0;
-        z-index: -1;
-        filter: brightness(30%);
-    } */
-
         :root {
             --white-light: rgba(255, 255, 255, 0.5);
             --alice-blue: #f8f9fa;
@@ -183,11 +169,6 @@
             display: inline-block;
         }
 
-        .product-price:first-of-type {
-            text-decoration: line-through;
-            color: var(--carribean-green);
-        }
-
         .product-img img {
             transition: transform 0.6s ease;
         }
@@ -275,14 +256,19 @@
 </section>
 <!-- Featured Products -->
 <section id="featured">
+    <div class="row justify-content-center">
+        <h1 class="row col-lg-12 col-md-12 justify-content-center">NEW ARRIVALS</h1>
+        <h3 class=""><span>Best Price</span> This Year</h3>
+    </div>
     <div class="products">
         <div class="container-fluid">
             <div class="product-items">
                 <!-- single product -->
+                {% for p in featured_product %}
                 <div class="product">
                     <div class="product-content">
                         <div class="product-img">
-                            <img src="{% static 'img/img1.png' %}" alt="product image">
+                            <img src="{{ p.product_image.url }}" alt="product image">
                         </div>
                         <div class="product-btns">
                             <button type="button" class="btn-cart"> Add to Cart
@@ -296,105 +282,17 @@
 
                     <div class="product-info">
                         <div class="product-info-top">
-                            <h2 class="sm-title">Item</h2>
+                            <h2 class="sm-title">{{p.category}}</h2>
                         </div>
-                        <a href="#" class="product-name">Product</a>
-                        <p class="product-price">Rs 50</p>
-                        <p class="product-price">Rs 40</p>
+                        <a href="#" class="product-name">{{p.name}}</a>
+                        <p class="product-price">Rs {{p.price}}</p>
                     </div>
                     <div class="off-info">
-                        <h2 class="sm-title">25% off</h2>
+                        <h2 class="sm-title">{{p.available}}</h2>
                     </div>
                 </div>
+                {% endfor %}
                 <!-- end -->
-                <!-- single product -->
-                <div class="product">
-                    <div class="product-content">
-                        <div class="product-img">
-                            <img src="{% static 'img/img1.png' %}" alt="product image">
-                        </div>
-                        <div class="product-btns">
-                            <button type="button" class="btn-cart"> add to cart
-                                <span><i class="fas fa-plus"></i></span>
-                            </button>
-                            <button type="button" class="btn-buy"> buy now
-                                <span><i class="fas fa-shopping-cart"></i></span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="product-info">
-                        <div class="product-info-top">
-                            <h2 class="sm-title">Item</h2>
-                        </div>
-                        <a href="#" class="product-name">Product</a>
-                        <p class="product-price">Rs 50</p>
-                        <p class="product-price">Rs 40</p>
-                    </div>
-                    <div class="off-info">
-                        <h2 class="sm-title">25% off</h2>
-                    </div>
-                </div>
-                <!-- end -->
-                <!-- single product -->
-                <div class="product">
-                    <div class="product-content">
-                        <div class="product-img">
-                            <img src="{% static 'img/img1.png' %}" alt="product image">
-                        </div>
-                        <div class="product-btns">
-                            <button type="button" class="btn-cart"> add to cart
-                                <span><i class="fas fa-plus"></i></span>
-                            </button>
-                            <button type="button" class="btn-buy"> buy now
-                                <span><i class="fas fa-shopping-cart"></i></span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="product-info">
-                        <div class="product-info-top">
-                            <h2 class="sm-title">Item</h2>
-                        </div>
-                        <a href="#" class="product-name">Product</a>
-                        <p class="product-price">Rs 50</p>
-                        <p class="product-price">Rs 40</p>
-                    </div>
-                    <div class="off-info">
-                        <h2 class="sm-title">25% off</h2>
-                    </div>
-                </div>
-                <!-- end -->
-                <!-- single product -->
-                <div class="product">
-                    <div class="product-content">
-                        <div class="product-img">
-                            <img src="{% static 'img/img1.png' %}" alt="product image">
-                        </div>
-                        <div class="product-btns">
-                            <button type="button" class="btn-cart"> add to cart
-                                <span><i class="fas fa-plus"></i></span>
-                            </button>
-                            <button type="button" class="btn-buy"> buy now
-                                <span><i class="fas fa-shopping-cart"></i></span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="product-info">
-                        <div class="product-info-top">
-                            <h2 class="sm-title">Item</h2>
-                        </div>
-                        <a href="#" class="product-name">Product</a>
-                        <p class="product-price">Rs 50</p>
-                        <p class="product-price">Rs 40</p>
-                    </div>
-                    <div class="off-info">
-                        <h2 class="sm-title">25% off</h2>
-                    </div>
-                </div>
-                <!-- end -->
-
                 <!-- End of First row -->
             </div>
         </div>
