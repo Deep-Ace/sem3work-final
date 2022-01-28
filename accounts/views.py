@@ -1,9 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect,HttpResponse
 # Create your views here.
 
+#for showing login button for admin(by sumit)
+# def adminclick_view(request):
+#     if request.user.is_authenticated:
+#         return HttpResponseRedirect('afterlogin')
+#     return HttpResponseRedirect('adminlogin')
 
 def userLogin(request):
     if request.method == 'POST':
@@ -14,7 +20,7 @@ def userLogin(request):
         if user is not None:
             auth.login(request, user)
             # messages.success(request, 'You are now logged in.')
-            return redirect('dashboard')
+            return redirect('userDashboard')
         else:
             messages.error(request, "Invalid login credentials")
             return redirect('userLogin')
@@ -44,6 +50,8 @@ def userRegister(request):
                     # messages.success(request, "You are now logged in.")
                     # return redirect('dashboard')
                     user.save()
+                    my_customer_group = Group.objects.get_or_create(name='CUSTOMER')
+                    my_customer_group[0].user_set.add(user)
                     messages.success(request, 'You are registered successfully')
                     return redirect('userRegister')
 
@@ -53,9 +61,60 @@ def userRegister(request):
     else:
         return render(request, 'accounts/userRegister.html')
 
-# -----------for checking user iscustomer
-
-
+# for checking user is user
 @login_required(login_url='userLogin')
-def dashboard(request):
-    return render(request, 'accounts/dashboard.html')
+def userDashboard(request):
+    return render(request, 'accounts/userDashboard.html')
+
+
+def logout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+        messages.success(request, 'You are successfully logged out.')
+        return redirect('userLogin') 
+    return redirect('home')
+
+def resetPass(request):
+    return render(request, 'accounts/resetPass.html')
+
+
+# def is_customer(user):
+#     return user.groups.filter(name='CUSTOMER').exists()
+
+# @login_required
+def afterlogin_view(request):
+    if request.user.is_superuser:
+        return redirect('adminDashboard')
+    else:
+        messages.error(request, "Invalid login credentials")
+        return redirect('adminlogin')
+    # if request.method == 'POST':
+    #     username = request.POST['username']
+    #     password = request.POST['password']
+    #     user = auth.authenticate(username=username, password=password)
+
+    #     if user.is_superuser:
+    #         auth.login(request, user)
+    #         messages.success(request, 'You are now logged in.')
+    #         return redirect('adminDashboard')
+    #     else:
+    #         messages.error(request, "Invalid login credentials")
+    #         return redirect('adminlogin')
+    # return render(request, 'accounts/adminlogin.html')
+
+    # if request.user.is_superuser.exists:
+    #     return redirect('adminDashboard')
+    # else:
+    #     return redirect('userDashboard')
+
+
+@login_required(login_url='afterlogin')
+def adminDashboard(request):
+    if request.user.is_superuser:
+        return render(request, 'accounts/adminDashboard.html')
+    else:
+        messages.error(request, "Invalid login credentials")
+        return redirect('adminlogin')
+    # return render(request, 'accounts/adminDashboard.html')
+
+

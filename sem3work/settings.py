@@ -73,6 +73,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sem3work.wsgi.application'
 
+LOGIN_REDIRECT_URL = '/afterlogin'
+
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
