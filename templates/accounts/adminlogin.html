@@ -16,7 +16,7 @@
 						<div class="card-body">
 							<h4 class="card-title">Login</h4>
 							{% include 'includes/messages.html' %}
-							<form action="{% url 'afterlogin' %}" method="POST" class="my-login-validation" novalidate="">
+							<form action="{% url 'adminlogin' %}" method="POST" class="my-login-validation" novalidate="">
 								{% csrf_token %}
 								<div class="form-group">
 									<label for="username">Username</label>

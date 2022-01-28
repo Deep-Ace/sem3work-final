@@ -81,7 +81,7 @@ def resetPass(request):
 # def is_customer(user):
 #     return user.groups.filter(name='CUSTOMER').exists()
 
-# @login_required
+@login_required
 def afterlogin_view(request):
     if request.user.is_superuser:
         return redirect('adminDashboard')
