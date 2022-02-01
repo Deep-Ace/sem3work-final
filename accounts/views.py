@@ -53,9 +53,6 @@ def userRegister(request):
                     # messages.success(request, "You are now logged in.")
                     # return redirect('dashboard')
                     user.save()
-                    my_customer_group = Group.objects.get_or_create(
-                        name='CUSTOMER')
-                    my_customer_group[0].user_set.add(user)
                     messages.success(
                         request, 'You are registered successfully')
                     return redirect('userRegister')
@@ -72,6 +69,8 @@ def userRegister(request):
 @login_required(login_url='userLogin')
 def userDashboard(request):
     return render(request, 'accounts/userDashboard.html')
+
+
 
 
 def logout(request):
@@ -180,9 +179,27 @@ def update_product_view(request, pk):
     products = models.Product.objects.get(id=pk)
     productForm = forms.ProductForm(instance=products)
     if request.method == 'POST':
-        productForm = forms.ProductForm(
-            request.POST, request.FILES, instance=products)
+        productForm = forms.ProductForm(request.POST, request.FILES, instance=products)
         if productForm.is_valid():
             productForm.save()
             return redirect('admin-products')
     return render(request, 'admincontrol/admin_update_product.html', {'productForm': productForm, 'products':products})
+
+@login_required(login_url='userLogin')
+def edit_profile_view(request):
+    user=models.User.objects.get(id=request.user.id)
+    userForm=forms.UserForm(instance=user)
+    mydict={
+        'userForm':userForm,
+        'user':user
+    }
+    if request.method=='POST':
+        userForm=forms.UserForm(request.POST, request.FILES, instance=user)
+        if userForm.is_valid():
+            user.set_password(user.password)
+            userForm.save()
+            # user.set_password(user.password)
+            # user.save()
+            return HttpResponseRedirect('userDashboard')
+
+    return render(request,'usercontrol/edit_profile.html',context=mydict)

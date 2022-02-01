@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'ecom.apps.EcomConfig',
     'accounts.apps.AccountsConfig',
     'store.apps.StoreConfig',
+    'cart.apps.CartConfig',
 
 ]
 

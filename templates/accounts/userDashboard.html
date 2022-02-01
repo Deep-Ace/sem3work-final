@@ -11,9 +11,13 @@
     </style>
 </head>
 <body>
-    <div class="container red mt-5 pt-5">
+    <div class="container red my-5 py-5">
         <br> <br> 
-        Hello {{ request.user.username}}
+        Hello {{ request.user.username}} <br>
+        <a href="{% url 'edit-profile' %}">Edit Profile</a> <br>
+        {{ request.user.first_name}} <br>
+        {{ request.user.last_name}} <br>
+        {{ request.user.email}} <br>
     </div>
 </body>
 
