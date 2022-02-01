@@ -22,4 +22,7 @@ urlpatterns = [
     path('admin-add-product', views.admin_add_product_view,name='admin-add-product'),
     path('delete-product/<int:pk>', views.delete_product_view,name='delete-product'),
     path('update-product/<int:pk>', views.update_product_view,name='update-product'),
+
+    # User Related Views
+    path('edit-profile', views.edit_profile_view,name='edit-profile'),
 ]

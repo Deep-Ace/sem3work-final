@@ -253,32 +253,35 @@
             <div class="product-items">
                 <!-- single product -->
                 {% for p in products %}
-                <div class="product">
-                    <div class="product-content">
-                        <div class="product-img">
-                            <img src="{{ p.product_image.url }}" alt="product image">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="product">
+                        <div class="product-content">
+                            <div class="product-img">
+                                <img src="{{ p.product_image.url }}" alt="product image">
+                            </div>
+                            <div class="product-btns">
+                                <button type="submit" class="btn-cart"> Add to Cart
+                                    <span><i class="fas fa-plus"></i></span>
+                                </button>
+                                <!-- <button type="button" class="btn-buy"> Buy Now
+                                    <span><i class="fas fa-shopping-cart"></i></span>
+                                </button> -->
+                            </div>
                         </div>
-                        <div class="product-btns">
-                            <button type="button" class="btn-cart"> Add to Cart
-                                <span><i class="fas fa-plus"></i></span>
-                            </button>
-                            <button type="button" class="btn-buy"> Buy Now
-                                <span><i class="fas fa-shopping-cart"></i></span>
-                            </button>
-                        </div>
-                    </div>
 
-                    <div class="product-info">
-                        <div class="product-info-top">
-                            <h2 class="sm-title">{{p.category}}</h2>
+                        <div class="product-info">
+                            <div class="product-info-top">
+                                <h2 class="sm-title">{{p.category}}</h2>
+                            </div>
+                            <a href="#" class="product-name">{{p.name}}</a>
+                            <p class="product-price">Rs {{p.price}}</p>
                         </div>
-                        <a href="#" class="product-name">{{p.name}}</a>
-                        <p class="product-price">Rs {{p.price}}</p>
+                        <div class="off-info">
+                            <h2 class="sm-title">{{p.available}}</h2>
+                        </div>
                     </div>
-                    <div class="off-info">
-                        <h2 class="sm-title">{{p.available}}</h2>
-                    </div>
-                </div>
+                </form>
                 {% endfor %}
                 <!-- end -->
                 <!-- single product -->

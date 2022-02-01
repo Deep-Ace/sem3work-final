@@ -1,6 +1,8 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
+
+
 
 class Product(models.Model):
     available_choice = (
@@ -8,7 +10,7 @@ class Product(models.Model):
         ('Out Of Stock', 'Out Of Stock'),
     )
     name = models.CharField(max_length=40)
-    product_image = models.ImageField(upload_to='product_image/', null=True, blank=True)
+    product_image = models.ImageField(upload_to='product_image/', null=True, blank=True)      
     category=models.CharField(max_length=40)
     price = models.PositiveIntegerField()
     available = models.CharField(choices=available_choice, max_length=40)
