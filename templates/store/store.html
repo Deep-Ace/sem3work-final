@@ -249,25 +249,31 @@
 
 <body>
     <div class="products mt-5 pt-5">
-        <div class="container">
+        <div class="container pt-5">
+            {% include 'includes/messages.html' %}
             <div class="product-items">
                 <!-- single product -->
                 {% for p in products %}
-                <form action="" method="POST">
+                <form action="{% url 'add-to-cart' p.id  %}" method="POST">
                     {% csrf_token %}
                     <div class="product">
                         <div class="product-content">
                             <div class="product-img">
                                 <img src="{{ p.product_image.url }}" alt="product image">
                             </div>
+                            {% if p.available == 'In Stock' %} 
                             <div class="product-btns">
                                 <button type="submit" class="btn-cart"> Add to Cart
                                     <span><i class="fas fa-plus"></i></span>
                                 </button>
-                                <!-- <button type="button" class="btn-buy"> Buy Now
-                                    <span><i class="fas fa-shopping-cart"></i></span>
-                                </button> -->
                             </div>
+                            {% else %}
+                            <div class="product-btns">
+                                <button disabled type="submit" class="btn-cart"> Add to Cart
+                                    <span><i class="fas fa-plus"></i></span>
+                                </button>
+                            </div>
+                            {% endif %}
                         </div>
 
                         <div class="product-info">
@@ -276,6 +282,7 @@
                             </div>
                             <a href="#" class="product-name">{{p.name}}</a>
                             <p class="product-price">Rs {{p.price}}</p>
+                            
                         </div>
                         <div class="off-info">
                             <h2 class="sm-title">{{p.available}}</h2>
