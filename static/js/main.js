@@ -103,7 +103,7 @@ var decrementQty = minusBtn.click(function () {
 		.parent(".button-container")
 		.find(".qty");
 	var QtyVal = Number($n.val());
-	if (QtyVal > 0) {
+	if (QtyVal > 1) {
 		$n.val(QtyVal - 1);
 	}
 	update_amounts();

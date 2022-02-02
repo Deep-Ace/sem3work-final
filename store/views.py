@@ -4,6 +4,7 @@ from accounts import models
 # Create your views here.
 def store(request):
     products=models.Product.objects.all()
+    # products=models.Product.objects.filter(available='In Stock')
     data = {
         'products':products,
     }
