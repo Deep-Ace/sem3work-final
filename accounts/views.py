@@ -200,6 +200,14 @@ def edit_profile_view(request):
             userForm.save()
             # user.set_password(user.password)
             # user.save()
+            messages.success(request, "Account Sucessfully Updated")
             return HttpResponseRedirect('userDashboard')
 
     return render(request,'usercontrol/edit_profile.html',context=mydict)
+
+@login_required(login_url='userLogin')
+def delete_user(request, user_id):
+    user = User.objects.get(id=user_id)
+    user.delete()
+    messages.success(request, "Account Sucessfully Deleted")
+    return redirect('userLogin')

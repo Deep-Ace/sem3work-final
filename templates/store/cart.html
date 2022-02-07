@@ -107,10 +107,25 @@
         tbody td .fas:hover {
             color: red;
         }
+
+        #purchase{
+            color: #fff;
+            background-color: black;
+            border-radius: 5px;
+            padding: 0 20px;
+            transition: 0.3s ease;
+            text-decoration: none;
+        }
+
+        #purchase:hover {
+            color: black;
+            background-color: coral;
+        }
     </style>
 </head>
-<div class="container mt-5 pt-5">
-    <h2 class="mb-5 text-center">Shopping Cart</h2>
+<div class="container my-5 pt-5">
+    <h2 class="text-center my-5">Shopping Cart</h2>
+    {% include 'includes/messages.html' %}
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="table-responsive">
@@ -124,6 +139,7 @@
                             <th class="text-right">
                                 <span id="amount" class="amount1">Amount</span>
                             </th>
+                            <th class="text-center">.</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -157,31 +173,18 @@
                             </td>
                             <td>$ <span id="amount" class="amount">0</span>
                             </td>
+                            <td>
+                                <a id="purchase" href="{% url 'purchaseitem' p.id %}" style="text-decoration: none;">Buy Now</a>
+                            </td>
                         </tr>
-                        {%else%}
+                        {% else %}
                         <br><br><br>
                         <h1>no products</h1>
                         {% endif %}
                         {% endfor %}
-
-
-
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="4"></td>
-                            <td>
-                                <strong>TOTAL = $ <span id="total" class="total">0</span>
-                                </strong>
+                </table>
             </div>
-            <br><br><br>
-            <div style="text-align: center;">
-                <a href="#"><button class="button"><span>Purchase </span></button></a>
-            </div>
-            </td>
-            </tr>
-            </tfoot>
-            </table>
         </div>
     </div>
 </div>
