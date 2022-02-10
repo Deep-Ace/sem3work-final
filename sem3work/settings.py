@@ -72,9 +72,11 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'sem3work.wsgi.application'
 
 LOGIN_REDIRECT_URL = '/afterlogin'
+
 
 
 # Database
