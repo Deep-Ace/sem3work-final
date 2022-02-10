@@ -5,6 +5,9 @@ from django.contrib.auth.models import User, Group
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
+from cart.models import Orders
+from cart import forms
+
 # Create your views here.
 
 # for showing login button for admin(by sumit)
@@ -71,8 +74,6 @@ def userDashboard(request):
     return render(request, 'accounts/userDashboard.html')
 
 
-
-
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
@@ -133,10 +134,13 @@ def adminDashboard(request):
         User = get_user_model()
         usercount = User.objects.all().count()
         productcount = models.Product.objects.all().count()
-
+        ordercount = Orders.objects.all().count()
+        order = Orders.objects.all()
         mydict = {
             'usercount': usercount,
             'productcount': productcount,
+            'ordercount': ordercount,
+            'order': order,
         }
         return render(request, 'accounts/adminDashboard.html', mydict)
     else:
@@ -157,14 +161,14 @@ def admin_products_view(request):
 
 @login_required(login_url='adminlogin')
 def admin_add_product_view(request):
-    products=models.Product.objects.all()
+    products = models.Product.objects.all()
     productForm = forms.ProductForm()
     if request.method == 'POST':
         productForm = forms.ProductForm(request.POST, request.FILES)
         if productForm.is_valid():
             productForm.save()
         return HttpResponseRedirect('admin-products')
-    return render(request, 'admincontrol/admin_add_products.html', {'productForm': productForm, 'products':products})
+    return render(request, 'admincontrol/admin_add_products.html', {'productForm': productForm, 'products': products})
 
 
 @login_required(login_url='adminlogin')
@@ -179,22 +183,52 @@ def update_product_view(request, pk):
     products = models.Product.objects.get(id=pk)
     productForm = forms.ProductForm(instance=products)
     if request.method == 'POST':
-        productForm = forms.ProductForm(request.POST, request.FILES, instance=products)
+        productForm = forms.ProductForm(
+            request.POST, request.FILES, instance=products)
         if productForm.is_valid():
             productForm.save()
             return redirect('admin-products')
-    return render(request, 'admincontrol/admin_update_product.html', {'productForm': productForm, 'products':products})
+    return render(request, 'admincontrol/admin_update_product.html', {'productForm': productForm, 'products': products})
+
+
+@login_required(login_url='adminlogin')
+def admin_view_booking_view(request):
+    order = Orders.objects.all()
+
+    data = {'order': order}
+    # ordered_products=[]
+    # ordered_bys=[]
+    # for order in orders:
+    #     ordered_product=models.Product.objects.all().filter(id=order.product.id)
+    #     ordered_by=models.Customer.objects.all().filter(id = order.customer.id)
+    #     ordered_products.append(ordered_product)
+    #     ordered_bys.append(ordered_by)
+    # ,{'data':zip(ordered_products,ordered_bys,orders)}
+    return render(request, 'admincontrol/booking.html', data)
+
+
+@login_required(login_url='adminlogin')
+def update_order_view(request, pk):
+    order = Orders.objects.get(id=pk)
+    orderForm = forms.OrderForm(instance=order)
+    if request.method == 'POST':
+        orderForm = forms.OrderForm(request.POST, instance=order)
+        if orderForm.is_valid():
+            orderForm.save()
+            return redirect('admin-view-booking')
+    return render(request, 'admincontrol/updateorderstatus.html', {'orderForm': orderForm})
+
 
 @login_required(login_url='userLogin')
 def edit_profile_view(request):
-    user=models.User.objects.get(id=request.user.id)
-    userForm=forms.UserForm(instance=user)
-    mydict={
-        'userForm':userForm,
-        'user':user
+    user = models.User.objects.get(id=request.user.id)
+    userForm = forms.UserForm(instance=user)
+    mydict = {
+        'userForm': userForm,
+        'user': user
     }
-    if request.method=='POST':
-        userForm=forms.UserForm(request.POST, request.FILES, instance=user)
+    if request.method == 'POST':
+        userForm = forms.UserForm(request.POST, request.FILES, instance=user)
         if userForm.is_valid():
             user.set_password(user.password)
             userForm.save()
@@ -203,7 +237,8 @@ def edit_profile_view(request):
             messages.success(request, "Account Sucessfully Updated")
             return HttpResponseRedirect('userDashboard')
 
-    return render(request,'usercontrol/edit_profile.html',context=mydict)
+    return render(request, 'usercontrol/edit_profile.html', context=mydict)
+
 
 @login_required(login_url='userLogin')
 def delete_user(request, user_id):
@@ -211,3 +246,21 @@ def delete_user(request, user_id):
     user.delete()
     messages.success(request, "Account Sucessfully Deleted")
     return redirect('userLogin')
+
+
+@login_required(login_url='userLogin')
+def my_order_view(request, id):
+    user = User.objects.get(id=id)
+    order = Orders.objects.all()
+    # order = Orders.objects.all().filter(id=user.id)
+
+    data = {
+        'order':order
+    }
+    # ordered_products=[]
+    # for order in orders:
+    #     ordered_product=models.Product.objects.all().filter(id=order.product.id)
+    #     ordered_products.append(ordered_product)
+    # {'data': zip(ordered_products, orders)}
+
+    return render(request, 'usercontrol/myorder.html', data)

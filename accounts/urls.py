@@ -24,7 +24,11 @@ urlpatterns = [
     path('delete-product/<int:pk>', views.delete_product_view,name='delete-product'),
     path('update-product/<int:pk>', views.update_product_view,name='update-product'),
 
+    path('admin-view-booking', views.admin_view_booking_view,name='admin-view-booking'),
+    path('update-order/<int:pk>', views.update_order_view,name='update-order'),
+
     # User Related Views
     path('edit-profile', views.edit_profile_view,name='edit-profile'),
     path('deleteuser/<int:user_id>', views.delete_user, name='deleteuser'),
+    path('my-order/<int:id>', views.my_order_view,name='my-order'),
 ]

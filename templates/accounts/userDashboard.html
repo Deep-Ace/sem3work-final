@@ -34,7 +34,7 @@
             <p style="text-transform: none; font-size: 23px; font-weight:normal">
                 Personal info and options to manage it. <br>
                 You can change your credentials and also have the feature to delete the account!
-                
+
             </p>
         </div><br><br>
         <div class="container-userdata">
@@ -45,12 +45,16 @@
                 <h4>Email</h4>{{ request.user.email}}
             </ul>
         </div>
+
         <div class="panel-footer">
             <a href="{% url 'edit-profile' %}" type="button" class="btn btn-sm btn-primary" style="margin-top: 30px;">
-                Edit My Profile</a>
-            <a class="btn btn-sm btn-danger" href="{% url 'deleteuser' request.user.id %}" style="margin-left: 30px; margin-top: 30px;">Delete</a>
+                Edit My Profile</a> <br>
+            <a href="{% url 'my-order' request.user.id %}" type="button" class="btn btn-sm btn-info" style="margin-top: 30px;">
+                View My Orders</a>
+            <a class="btn btn-sm btn-danger" href="{% url 'deleteuser' request.user.id %}"
+                style="float: right; margin-top: 30px;">Delete</a>
         </div>
-
+        
 
     </div>
 </body>
