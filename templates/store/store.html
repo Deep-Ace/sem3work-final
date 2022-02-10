@@ -261,7 +261,7 @@
                             <div class="product-img">
                                 <img src="{{ p.product_image.url }}" alt="product image">
                             </div>
-                            {% if p.available == 'In Stock' %} 
+                            {% if p.available == 'In Stock' %}
                             <div class="product-btns">
                                 <button type="submit" class="btn-cart"> Add to Cart
                                     <span><i class="fas fa-plus"></i></span>
@@ -280,9 +280,9 @@
                             <div class="product-info-top">
                                 <h2 class="sm-title">{{p.category}}</h2>
                             </div>
-                            <a href="#" class="product-name">{{p.name}}</a>
+                            <p class="product-name">{{p.name}}</p>
                             <p class="product-price">Rs {{p.price}}</p>
-                            
+
                         </div>
                         <div class="off-info">
                             <h2 class="sm-title">{{p.available}}</h2>
@@ -290,39 +290,44 @@
                     </div>
                 </form>
                 {% endfor %}
-                <!-- end -->
-                <!-- single product -->
-                <!-- <div class="product">
-                    <div class="product-content">
-                        <div class="product-img">
-                            <img src="{% static 'img/img1.png' %}" alt="product image">
-                        </div>
-                        <div class="product-btns">
-                            <button type="button" class="btn-cart"> add to cart
-                                <span><i class="fas fa-plus"></i></span>
-                            </button>
-                            <button type="button" class="btn-buy"> buy now
-                                <span><i class="fas fa-shopping-cart"></i></span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="product-info">
-                        <div class="product-info-top">
-                            <h2 class="sm-title">Item</h2>
-                        </div>
-                        <a href="#" class="product-name">Product</a>
-                        <p class="product-price">Rs 50</p>
-                        <p class="product-price">Rs 40</p>
-                    </div>
-                    <div class="off-info">
-                        <h2 class="sm-title">25% off</h2>
-                    </div>
-                </div> -->
-                <!-- end -->
-
-                <!-- End of First row -->
             </div>
+            <!-- PAGINATION STARTS -->
+            <nav aria-label="..." class="container pt-5">
+                {% if products.has_other_pages %}
+                <ul class="pagination">
+                    {% if products.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ products.previous_page_number }}"><i
+                                class="fa fa-angle-left"></i></a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link"><i class="fas fa-angle-left"></i></a>
+                    </li>
+                    {% endif %}
+
+                    {% for i in products.paginator.page_range %}
+                    {% if products.number == i %}
+                    <li class="page-item active"><a class="page-link" href="#">{{i}}</a></li>
+                    {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if products.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ products.next_page_number }}"><i
+                                class="fa fa-angle-right"></i></a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link"><i class="fas fa-angle-right"></i></a>
+                    </li>
+                    {% endif %}
+                </ul>
+                {% endif %}
+            </nav>
+            <!-- PAGINATION ENDS -->
         </div>
     </div>
 

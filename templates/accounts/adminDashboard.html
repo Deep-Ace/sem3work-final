@@ -7,7 +7,9 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>
+        {% block title %} Admin Dashboard {% endblock %}
+    </title>
 
     <style media="screen">
         .market-update-block {
@@ -198,44 +200,22 @@
                 <thead>
                     <tr>
                         <th>Customer Name</th>
-                        <th>Customer Mobile</th>
-                        <th>Shipment Address</th>
+                        <th>Customer Email</th>
                         <th>Product Name</th>
                         <th>Product Picture</th>
                         <th>Status</th>
-
                     </tr>
                 </thead>
-                {% for product,customer,order in data %}
+                {% for od in order %}
                 <tr>
-                    {% for c in customer %}
-                    <td> {{c.get_name}}</td>
-                    <td>{{c.mobile}}</td>
-                    <td>{{order.address}}</td>
-
-                    {% endfor %}
-                    {% for p in product %}
-                    <td> {{p.name}}</td>
-                    <td> <img src="{% static p.product_image.url %}" alt="Profile Pic" height="40px" width="40px" />
-                    </td>
-
-                    {% if order.status == 'Pending'%}
-                    <td> <span class="label label-info">{{order.status}}</span></td>
-                    {% elif order.status == 'Delivered' %}
-                    <td> <span class="label label-success">{{order.status}}</span></td>
-                    {% elif order.status == 'Out for Delivery' %}
-                    <td> <span class="label label-warning">{{order.status}}</span></td>
-                    {%else%}
-                    <td> <span class="label label-primary">{{order.status}}</span></td>
-                    {%endif%}
-                    {% endfor %}
+                    <td>{{ od.user.first_name }} {{ od.user.last_name }}</td>
+                    <td>{{ od.user.email }}</td>
+                    <td>{{ od.product.name }}</td>
+                    <td> <img src="{{ od.product.product_image.url }}" alt="Profile Pic" height="30px" width="40px" /></td>
+                    <td>{{ od.status }}</td>
                 </tr>
                 {% endfor %}
-
-
-
-
-
+                
             </table>
 
         </div>

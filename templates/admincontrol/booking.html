@@ -1,0 +1,80 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block content %}
+
+
+<head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <style media="screen">
+        a:link {
+            text-decoration: none;
+        }
+
+        h6 {
+            text-align: center;
+        }
+
+        .row {
+            margin: 100px;
+        }
+
+        .float {
+            position: fixed;
+            width: 70px;
+            height: 70px;
+            bottom: 60px;
+            right: 60px;
+            background-color: red;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 3px 3px 3px #999;
+        }
+
+        .my-float {
+            margin-top: 22px;
+        }
+    </style>
+</head>
+
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h6 class="panel-title">Total Product List</h6>
+        </div>
+        <table class="table table-hover" id="dev-table">
+            <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Email</th>
+                    <th>Product Name</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th>Availability</th>
+                    <th>Status</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            
+            {% for od in order %}
+            <tr>
+                <td>{{ od.user.first_name }} {{ od.user.last_name }}</td>
+                <td>{{ od.user.email }}</td>
+                <td>{{ od.product.name }}</td>
+                <td> <img src="{{ od.product.product_image.url }}" alt="Profile Pic" height="30px" width="40px" /></td>
+                <td>{{ od.product.price }}</td>
+                <td>{{ od.product.available }}</td>
+                <td>{{ od.status }}</td>
+                <td><a class="btn btn-primary" href="{% url 'update-order' od.id  %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+                <td><a class="btn btn-danger btn-xs" href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

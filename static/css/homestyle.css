@@ -129,7 +129,7 @@ hr {
 
 /* Landing Page Design Starts */
 #home {
-    background-image: url("/static/img/back.png");
+    background-image: url("/static/img/back.jpg");
     width: 100%;
     height: 100vh;
     background-size: cover;

@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Cart, CartItem, Product
+from .models import Cart, CartItem, Product, Orders
 from accounts import forms, models
 
 # Create your views here.
@@ -12,15 +12,13 @@ def _cart_id(request):
     if not cart_id:
         cart_id = request.session.create()
     return cart_id
-
+    
+@login_required(login_url='userLogin')
 def add_cart(request, product_id):
     current_user = request.user
     product = Product.objects.get(id=product_id)
 
     if request.method == "POST":
-        # for item in request.POST:
-        #     key = item
-        #     value = request.POST[key]
 
         product = Product.objects.get(id=product_id)
         try:
@@ -69,5 +67,34 @@ def cart(request, total=0.0, quantity=0, cart_items=None):
 def remove_cart_item(request, cart_item_id):
     cart_item = CartItem.objects.get(id=cart_item_id)
     cart_item.delete()
-
+    messages.success(request, "Item Sucessfully Removed")
     return redirect('cart')
+
+def payment(request):
+    return render(request, 'store/payment.html')
+
+def completeOrder(request):
+    return render(request, 'store/ordercomplete.html')
+
+# def purchaseitem(request, cart_item_id):
+#     cart_item = CartItem.objects.get(id=cart_item_id)
+#     cart_item.delete()
+#     messages.success(request, "Item Sucessfully Bought")
+#     return redirect('cart')
+
+def purchaseitem(request, product_id):
+    if request.method == "POST":
+        current_user = request.user
+        product = Product.objects.get(id=product_id)
+
+
+
+        order = Orders(user=current_user, product=product)
+        order.save()
+
+        cart_item_id  = request.POST['cart_item_id']
+        cart_item = CartItem.objects.get(id=cart_item_id)
+        cart_item.delete()
+
+        messages.success(request, "Item Ordered")
+        return redirect('payment')

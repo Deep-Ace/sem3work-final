@@ -1,0 +1,23 @@
+<table class="table table-hover" id="dev-table">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Product Image</th>
+            <th>Product Price</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    {% for od in order %}
+    {% if request.user.id == od.user.id %}
+    <tr>
+        <td>{{ od.product.name }}</td>
+        <td> <img src="{{ od.product.product_image.url }}" alt="Profile Pic" height="30px" width="40px" /></td>
+        <td>{{ od.product.price }}</td>
+        <td>{{ od.status }}</td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+    
+</table>
+
+<a href="{% url 'userDashboard' %}">userDashboard</a>
