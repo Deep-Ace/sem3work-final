@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from cart.models import Orders
 from cart import forms
+from accounts.forms import UserForm, ProductForm
 
 # Create your views here.
 
@@ -162,9 +163,9 @@ def admin_products_view(request):
 @login_required(login_url='adminlogin')
 def admin_add_product_view(request):
     products = models.Product.objects.all()
-    productForm = forms.ProductForm()
+    productForm = ProductForm()
     if request.method == 'POST':
-        productForm = forms.ProductForm(request.POST, request.FILES)
+        productForm = ProductForm(request.POST, request.FILES)
         if productForm.is_valid():
             productForm.save()
         return HttpResponseRedirect('admin-products')
@@ -181,9 +182,9 @@ def delete_product_view(request, pk):
 @login_required(login_url='adminlogin')
 def update_product_view(request, pk):
     products = models.Product.objects.get(id=pk)
-    productForm = forms.ProductForm(instance=products)
+    productForm = ProductForm(instance=products)
     if request.method == 'POST':
-        productForm = forms.ProductForm(
+        productForm = ProductForm(
             request.POST, request.FILES, instance=products)
         if productForm.is_valid():
             productForm.save()
@@ -243,13 +244,13 @@ def delete_customer_view(request,pk):
 @login_required(login_url='userLogin')
 def edit_profile_view(request):
     user = models.User.objects.get(id=request.user.id)
-    userForm = forms.UserForm(instance=user)
+    userForm = UserForm(instance=user)
     mydict = {
         'userForm': userForm,
         'user': user
     }
     if request.method == 'POST':
-        userForm = forms.UserForm(request.POST, request.FILES, instance=user)
+        userForm = UserForm(request.POST, request.FILES, instance=user)
         if userForm.is_valid():
             user.set_password(user.password)
             userForm.save()
