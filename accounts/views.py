@@ -132,7 +132,7 @@ def afterlogin_view(request):
 def adminDashboard(request):
     if request.user.is_superuser:
         User = get_user_model()
-        usercount = User.objects.all().count()
+        usercount = User.objects.all().filter(is_superuser=False).count()
         productcount = models.Product.objects.all().count()
         ordercount = Orders.objects.all().count()
         order = Orders.objects.all()
@@ -217,6 +217,27 @@ def update_order_view(request, pk):
             orderForm.save()
             return redirect('admin-view-booking')
     return render(request, 'admincontrol/updateorderstatus.html', {'orderForm': orderForm})
+
+@login_required(login_url='adminlogin')
+def delete_order_view(request,pk):
+    order=Orders.objects.get(id=pk)
+    order.delete()
+    return redirect('admin-view-booking')
+
+
+@login_required(login_url='adminlogin')
+def view_customer(request):
+    User = get_user_model()
+    users=User.objects.all().order_by('username').filter(is_superuser=False)
+
+    return render(request,'admincontrol/view_customer.html',{'users':users})
+
+@login_required(login_url='adminlogin')
+def delete_customer_view(request,pk):
+    User = get_user_model()
+    users=User.objects.get(id=pk)
+    users.delete()
+    return redirect('view-customer')
 
 
 @login_required(login_url='userLogin')

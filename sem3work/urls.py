@@ -22,12 +22,11 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
+    # Below path for using custom made Admin Panel
     path('adminlogin/', auth_views.LoginView.as_view(template_name='accounts/adminlogin.html'), name='adminlogin'),
-
-     # path('adminlogin', LoginView.as_view(template_name='accounts/adminlogin.html'),name='adminlogin'),
+    # Below path for using Django's Default Admin Panel
     path('admin/', admin.site.urls),
-    # path('adminlogin/', auth_views.LoginView.as_view(template_name='accounts/adminlogin.html'), name='adminlogin'),
-   
+ 
     path('', include('ecom.urls')),
     path('', include('accounts.urls')),
     path('', include('store.urls')),
