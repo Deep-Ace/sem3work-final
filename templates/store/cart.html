@@ -136,7 +136,6 @@
                     </thead>
                     <tbody>
                         {% for p in cart_items %}
-                        {% if p %}
                         <tr>
                             <td>
                                 <div class="product-img">
@@ -166,10 +165,6 @@
                                 </form>
                             </td>
                         </tr>
-                        {% else %}
-                        <br><br><br>
-                        <h1>no products</h1>
-                        {% endif %}
                         {% endfor %}
                     </tbody>
                 </table>

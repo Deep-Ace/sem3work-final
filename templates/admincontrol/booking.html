@@ -70,7 +70,7 @@
                 <td>{{ od.product.available }}</td>
                 <td>{{ od.status }}</td>
                 <td><a class="btn btn-primary" href="{% url 'update-order' od.id  %}"><span class="glyphicon glyphicon-edit"></span></a></td>
-                <td><a class="btn btn-danger btn-xs" href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+                <td><a class="btn btn-danger btn-xs" href="{% url 'delete-order' od.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
             </tr>
             {% endfor %}
         </table>
