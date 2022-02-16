@@ -1,227 +1,187 @@
-
 {% extends 'adminbase.html' %}
 
 {% load static %}
+{% block title %} Admin Dashboard {% endblock %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-    <meta charset="utf-8">
-    <title>
-        {% block title %} Admin Dashboard {% endblock %}
-    </title>
 
-    <style media="screen">
-        .market-update-block {
-            padding: 2em 2em;
-            background: #999;
-        }
+<div class="container-fluid">
+    <div class="row">
+        <div class="card col-lg-4 col-md-4" style="background-color: #5bc0de;">
+            <div>
+                <img style="height: 150px; width: 150px; float: left;" src="{% static '/img/customers.png'  %}"
+                    class="card-img-top mx-3" alt="">
+                <!-- <h3 style="float: left;" class="mt-5 mx-5 pt-2">TOTAL: <span>{{ usercount }}</span></h3> -->
 
-        .market-update-block h3 {
-            color: #fff;
-            font-size: 2.5em;
-            font-family: 'Carrois Gothic', sans-serif;
-        }
-
-        .market-update-block h4 {
-            font-size: 1.2em;
-            color: #fff;
-            margin: 0.3em 0em;
-            font-family: 'Carrois Gothic', sans-serif;
-        }
-
-        .market-update-block p {
-            color: #fff;
-            font-size: 0.8em;
-            line-height: 1.8em;
-        }
-
-        .market-update-block.clr-block-1 {
-            background: #ff0000;
-            margin-right: 0.8em;
-            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-            transition: 0.5s all;
-            -webkit-transition: 0.5s all;
-            -moz-transition: 0.5s all;
-            -o-transition: 0.5s all;
-        }
-
-        .market-update-block.clr-block-2 {
-            background: #FC8213;
-            margin-right: 0.8em;
-            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-            transition: 0.5s all;
-            -webkit-transition: 0.5s all;
-            -moz-transition: 0.5s all;
-            -o-transition: 0.5s all;
-        }
-
-        .market-update-block.clr-block-3 {
-            background: #1355f9;
-            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-            transition: 0.5s all;
-            -webkit-transition: 0.5s all;
-            -moz-transition: 0.5s all;
-            -o-transition: 0.5s all;
-        }
-
-        .market-update-block.clr-block-1:hover {
-            background: #3C3C3C;
-            transition: 0.5s all;
-            -webkit-transition: 0.5s all;
-            -moz-transition: 0.5s all;
-            -o-transition: 0.5s all;
-        }
-
-        .market-update-block.clr-block-2:hover {
-            background: #3C3C3C;
-            transition: 0.5s all;
-            -webkit-transition: 0.5s all;
-            -moz-transition: 0.5s all;
-            -o-transition: 0.5s all;
-        }
-
-        .market-update-block.clr-block-3:hover {
-            background: #3C3C3C;
-            transition: 0.5s all;
-            -webkit-transition: 0.5s all;
-            -moz-transition: 0.5s all;
-            -o-transition: 0.5s all;
-        }
-
-        .market-update-right i.fa.fa-user-o {
-            font-size: 3em;
-            color: #68AE00;
-            width: 80px;
-            height: 80px;
-            background: #fff;
-            text-align: center;
-            border-radius: 49px;
-            -webkit-border-radius: 49px;
-            -moz-border-radius: 49px;
-            -o-border-radius: 49px;
-            line-height: 1.7em;
-        }
-
-        .market-update-right i.fa.fa-shopping-basket {
-            font-size: 3em;
-            color: #FC8213;
-            width: 80px;
-            height: 80px;
-            background: #fff;
-            text-align: center;
-            border-radius: 49px;
-            -webkit-border-radius: 49px;
-            -moz-border-radius: 49px;
-            -o-border-radius: 49px;
-            line-height: 1.7em;
-        }
-
-        .market-update-right i.fa.fa-bar-chart {
-            font-size: 3em;
-            color: #337AB7;
-            width: 80px;
-            height: 80px;
-            background: #fff;
-            text-align: center;
-            border-radius: 49px;
-            -webkit-border-radius: 49px;
-            -moz-border-radius: 49px;
-            -o-border-radius: 49px;
-            line-height: 1.7em;
-        }
-
-        .market-update-left {
-            padding: 0px;
-        }
-    </style>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-
-<body>
-    <div class="market-updates">
-        <div class="col-md-4 market-update-gd">
-            <div class="market-update-block clr-block-1">
-                <div class="col-md-8 market-update-left">
-                    <h3>{{usercount}}</h3>
-                    <h4>Total Customer</h4>
-
-                </div>
-                <div class="col-md-4 market-update-right">
-                    <i class="fa fa-user-o"></i>
-                </div>
-                <div class="clearfix"> </div>
+                <button type="button" class="btn btn-secondary mt-5 mx-5 pt-2" style="width: 150px; float: left;">
+                    TOTAL <span class="badge bg-danger">{{ usercount }}</span>
+                </button>
+            </div>
+            <div class="card-body">
+                <center>
+                    <h3 class="card-title">Customers</h3>
+                </center>
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p> -->
+                <a href="{% url 'view-customer' %}" class="btn btn-secondary d-flex justify-content-center">View
+                    Customers</a>
             </div>
         </div>
-        <div class="col-md-4 market-update-gd">
-            <div class="market-update-block clr-block-2">
-                <div class="col-md-8 market-update-left">
-                    <h3>{{productcount}}</h3>
-                    <h4>Total Product</h4>
-
-                </div>
-                <div class="col-md-4 market-update-right">
-                    <i class="fa fa-shopping-basket"></i>
-                </div>
-                <div class="clearfix"> </div>
+        <div class="card col-lg-4 col-md-4" style="background-color: #5bc0de;">
+            <div>
+                <img style="height: 150px; width: 150px; float: left;" src="{% static '/img/booking.png'  %}"
+                    class="card-img-top mx-3" alt="">
+                <!-- <h3 style="float: left;" class="mt-5 mx-5 pt-2">TOTAL: <span>{{ ordercount }}</span></h3> -->
+                <button type="button" class="btn btn-secondary mt-5 mx-5 pt-2" style="width: 150px; float: left;">
+                    TOTAL <span class="badge bg-danger">{{ ordercount }}</span>
+                </button>
+            </div>
+            <div class="card-body">
+                <center>
+                    <h3 class="card-title">Bookings</h3>
+                </center>
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p> -->
+                <a href="{% url 'admin-view-booking' %}" class="btn btn-secondary d-flex justify-content-center">View
+                    Bookings</a>
             </div>
         </div>
-        <div class="col-md-4 market-update-gd">
-            <div class="market-update-block clr-block-3">
-                <div class="col-md-8 market-update-left">
-                    <h3>{{ordercount}}</h3>
-                    <h4>Total Orders</h4>
-
-                </div>
-                <div class="col-md-4 market-update-right">
-                    <i class="fa fa-bar-chart"> </i>
-                </div>
-                <div class="clearfix"> </div>
+        <div class="card col-lg-4 col-md-4" style="background-color: #5bc0de;">
+            <div>
+                <img style="height: 150px; width: 150px; float: left;" src="{% static '/img/products.png'  %}"
+                    class="card-img-top mx-3" alt="">
+                <!-- <h3 style="float: left;" class="mt-5 mx-5 pt-2">TOTAL: <span>{{ productcount }}</span></h3> -->
+                <button type="button" class="btn btn-secondary mt-5 mx-5 pt-2" style="width: 150px; float: left;">
+                    TOTAL <span class="badge bg-danger">{{ productcount }}</span>
+                </button>
+            </div>
+            <div class="card-body">
+                <center>
+                    <h3 class="card-title">Products</h3>
+                </center>
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p> -->
+                <a href="{% url 'admin-products' %}" class="btn btn-secondary d-flex justify-content-center">View
+                    Products</a>
             </div>
         </div>
-
     </div>
-    <br><br>
-    <!-- Table -->
-    <br><br><br><br><br>
 
-    <hr>
-    <hr>
-    <div class="container">
+</div>
 
-        <div class="panel panel-primary">
-            <div class="panel-heading" style="text-align:center;">
-                <h6 class="panel-title">Recent Booking</h6>
+
+
+
+
+
+
+<!-- <div class="market-updates">
+    <div class="col-md-4 market-update-gd">
+        <div class="market-update-block clr-block-1">
+            <div class="col-md-8 market-update-left">
+                <h3>{{usercount}}</h3>
+                <h4>Total Customer</h4>
+
             </div>
-            <table class="table table-hover" id="dev-table">
-                <thead>
-                    <tr>
-                        <th>Customer Name</th>
-                        <th>Customer Email</th>
-                        <th>Product Name</th>
-                        <th>Product Picture</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                {% for od in order %}
+            <div class="col-md-4 market-update-right">
+                <i class="fa fa-user-o"></i>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="col-md-4 market-update-gd">
+        <div class="market-update-block clr-block-2">
+            <div class="col-md-8 market-update-left">
+                <h3>{{productcount}}</h3>
+                <h4>Total Product</h4>
+
+            </div>
+            <div class="col-md-4 market-update-right">
+                <i class="fa fa-shopping-basket"></i>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="col-md-4 market-update-gd">
+        <div class="market-update-block clr-block-3">
+            <div class="col-md-8 market-update-left">
+                <h3>{{ordercount}}</h3>
+                <h4>Total Orders</h4>
+
+            </div>
+            <div class="col-md-4 market-update-right">
+                <i class="fa fa-bar-chart"> </i>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+
+</div> -->
+
+<div class="container-fluid">
+    <div class="row">
+        <h1 class="py-4" style="background-color: gray; color: #fff; text-align:center;">RECENT BOOKINGS</h1>  
+
+        <table class="table table-hover my-0 py-0">
+            <thead style="background-color: aqua;">
                 <tr>
-                    <td>{{ od.user.first_name }} {{ od.user.last_name }}</td>
-                    <td>{{ od.user.email }}</td>
-                    <td>{{ od.product.name }}</td>
-                    <td><img src="{{ od.product.product_image.url }}" alt="Profile Pic" height="30px" width="40px" /></td>
-                    <td>{{ od.status }}</td>
+                    <th>Customer Name</th>
+                    <th>Customer Email</th>
+                    <th>Product Name</th>
+                    <th>Product Picture</th>
+                    <th>Status</th>
                 </tr>
-                {% endfor %}
-                
-            </table>
+            </thead>
+            <tbody>
+            {% for od in order %}
+            <tr style="background-color: wheat;">
+                <td>{{ od.user.first_name }} {{ od.user.last_name }}</td>
+                <td>{{ od.user.email }}</td>
+                <td>{{ od.product.name }}</td>
+                <td><img src="{{ od.product.product_image.url }}" alt="Profile Pic" height="30px" width="40px" /></td>
+                <td>{{ od.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    </div>  
+    <!-- PAGINATION STARTS -->
+    <nav aria-label="..." class="container pt-5">
+        {% if order.has_other_pages %}
+        <ul class="pagination">
+            {% if order.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ order.previous_page_number }}"><i
+                        class="fas fa-angle-left"></i></a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link"><i class="fas fa-angle-left"></i></a>
+            </li>
+            {% endif %}
 
-        </div>
-    </div>
-</body>
+            {% for i in order.paginator.page_range %}
+            {% if order.number == i %}
+            <li class="page-item active"><a class="page-link" href="#">{{i}}</a></li>
+            {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+            {% endif %}
+            {% endfor %}
 
-</html>
+            {% if order.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ order.next_page_number }}"><i
+                        class="fas fa-angle-right"></i></a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link"><i class="fas fa-angle-right"></i></a>
+            </li>
+            {% endif %}
+        </ul>
+        {% endif %}
+    </nav>
+    <!-- PAGINATION ENDS -->
+</div>
+
 
 {% endblock%}
