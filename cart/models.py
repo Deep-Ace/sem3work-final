@@ -29,18 +29,6 @@ class CartItem(models.Model):
         return self.product
 
 
-# class Payment(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-#     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
-#     amount_paid = models.CharField(max_length=100)
-#     create_at = models.DateTimeField(auto_now_add=True)
-#     email = models.CharField(max_length=50)
-#     address = models.CharField(max_length=500)
-#     mobile = models.CharField(max_length=20)    
-#     def __str__(self) -> str:
-#         return self.payment_id
-
 
 class Orders(models.Model):
     STATUS = (
@@ -54,20 +42,3 @@ class Orders(models.Model):
     status = models.CharField(max_length=50, choices=STATUS, default='Pending')
     order_date = models.DateField(auto_now_add=True)
 
-# class Order(models.Model):
-#     status_choice = (
-#         ('New', 'New'),
-#         ('Accepted', 'Accepted'),
-#         ('Completed', 'Completed'),
-#         ('Cancelled', 'Cancelled'),
-#     )
-#     name = models.CharField(max_length=40)
-#     product_image = models.ImageField(upload_to='product_image/', null=True, blank=True)
-#     price = models.PositiveIntegerField()
-#     status = models.CharField(choices=status_choice, max_length=40)
-
-#     def sub_total(self):
-#         return self.quantity * self.product.price
-
-#     def __str__(self):
-#         return self.name

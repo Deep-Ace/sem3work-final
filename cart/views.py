@@ -31,10 +31,6 @@ def add_cart(request, product_id):
         if is_cart_item_exists:
             messages.success(request, "Item Already In Cart")
             return redirect('store')
-            
-            # cart_item = CartItem.objects.get()
-            # cart_item.quantity += 1
-            # cart_item.save()
         else:
             cart_item = CartItem.objects.create(
                 product=product,

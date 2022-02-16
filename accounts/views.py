@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from cart.models import Orders
 from cart import forms
 from accounts.forms import UserForm, ProductForm
-
+from django.core.paginator import Paginator
 # Create your views here.
 
 # for showing login button for admin(by sumit)
@@ -136,12 +136,16 @@ def adminDashboard(request):
         usercount = User.objects.all().filter(is_superuser=False).count()
         productcount = models.Product.objects.all().count()
         ordercount = Orders.objects.all().count()
+        # For Pagination
         order = Orders.objects.all()
+        paginator = Paginator(order, 3)
+        page = request.GET.get('page')
+        paged_product = paginator.get_page(page)
         mydict = {
             'usercount': usercount,
             'productcount': productcount,
             'ordercount': ordercount,
-            'order': order,
+            'order': paged_product,
         }
         return render(request, 'accounts/adminDashboard.html', mydict)
     else:
@@ -155,7 +159,16 @@ def adminDashboard(request):
 @login_required(login_url='adminlogin')
 def admin_products_view(request):
     products = models.Product.objects.all()
-    return render(request, 'admincontrol/admin_products.html', {'products': products})
+    products=models.Product.objects.order_by('-name')
+    # products=models.Product.objects.filter(available='In Stock')
+    paginator = Paginator(products, 1)
+    page = request.GET.get('page')
+    paged_product = paginator.get_page(page)
+    data = {
+        'products': paged_product,
+    }
+
+    return render(request, 'admincontrol/admin_products.html', data)
 
 # admin add product by clicking on floating button
 
@@ -195,8 +208,12 @@ def update_product_view(request, pk):
 @login_required(login_url='adminlogin')
 def admin_view_booking_view(request):
     order = Orders.objects.all()
-
-    data = {'order': order}
+    paginator = Paginator(order, 5)
+    page = request.GET.get('page')
+    paged_product = paginator.get_page(page)
+    data = {
+        'order': paged_product,
+    }
     # ordered_products=[]
     # ordered_bys=[]
     # for order in orders:
@@ -230,8 +247,13 @@ def delete_order_view(request,pk):
 def view_customer(request):
     User = get_user_model()
     users=User.objects.all().order_by('username').filter(is_superuser=False)
-
-    return render(request,'admincontrol/view_customer.html',{'users':users})
+    paginator = Paginator(users, 2)
+    page = request.GET.get('page')
+    paged_product = paginator.get_page(page)
+    data = {
+        'users': paged_product,
+    }
+    return render(request,'admincontrol/view_customer.html',data)
 
 @login_required(login_url='adminlogin')
 def delete_customer_view(request,pk):
