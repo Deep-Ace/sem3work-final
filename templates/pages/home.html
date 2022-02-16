@@ -258,7 +258,7 @@
 <section id="featured">
     <div class="container-fluid justify-content-center">
         <h1 class="row col-lg-12 col-md-12 justify-content-center">NEW ARRIVALS</h1>
-        <h3 class="row col-lg-12 col-md-12 justify-content-center"><span>Best Price</span> This Year</h3>
+        <h3 class="row col-lg-12 col-md-12 justify-content-center">Best Price This Year</h3>
     </div>
     <div class="products">
         <div class="container-fluid">
@@ -315,7 +315,7 @@
 <section id="banner">
     <div class="container">
         <h4>MID SEASON'S SALE</h4>
-        <h1>Autumn Collection<br>UP TP 25% OFF</h1>
+        <h1>Autumn Collection<br>UP TO 25% OFF</h1>
         <a href="{% url 'store' %}" class="text-uppercase">Shop Now</a>
 
     </div>
@@ -323,8 +323,10 @@
 <!-- Contact Us  -->
 <section id="section-form" class="py-5">
     <div class="container">
-        <form method="post" action="#" class="contact-form">
+        <form method="POST" action="{% url 'contact' %}" class="contact-form">
+            {% csrf_token %}
             <h1 class="d-flex justify-content-center">Contact Us</h1>
+            {% include 'includes/messages.html' %}
             <div class="row my-3">
                 <div class="col-lg-4 col-md-6 col-4">
                     <label for="name">Name</label>
@@ -344,13 +346,13 @@
             <div class="row my-3">
                 <div class="col-lg-4 col-md-6 col-4">
                     <label for="find-us">How did you find us?</label>
-                </div>
+                </div>  
                 <div class="col-lg-6 col-md-6 col-8">
                     <select name="find-us" id="find-us">
-                        <option value="friends" selected>Friends</option>
-                        <option value="search">Search Engine</option>
-                        <option value="ad">Advertisement</option>
-                        <option value="other">Other</option>
+                        <option value="Friends" selected>Friends</option>
+                        <option value="Search Engine">Search Engine</option>
+                        <option value="Advertisement">Advertisement</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
             </div>
@@ -367,7 +369,8 @@
                     <label>&nbsp;</label>
                 </div>
                 <div class="col-lg-8 col-md-6 col-8">
-                    <a href="#" class="text-uppercase">Send It!</a>
+                    <button type="submit" >Send It!</button>
+                    <!-- <a type="submit"class="text-uppercase">Send It!</a> -->
                 </div>
             </div>
         </form>

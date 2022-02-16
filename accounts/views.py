@@ -26,7 +26,7 @@ def userLogin(request):
 
         if user is not None:
             auth.login(request, user)
-            # messages.success(request, 'You are now logged in.')
+            messages.success(request, 'You are now logged in.')
             return redirect('home')
         else:
             messages.error(request, "Invalid login credentials")
@@ -96,7 +96,7 @@ def logoutadmin(request):
 
 
 def resetPass(request):
-    return render(request, 'accounts/resetPass.html')
+    return render(request, 'accounts/password_reset_form.html')
 
 
 # def is_customer(user):

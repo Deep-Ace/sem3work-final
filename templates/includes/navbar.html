@@ -12,42 +12,72 @@
                 <img src="{% static 'img/logo.png' %}" alt="" class="logo">
             </a>
 
-            <input style="width: 250px; text-align: center;" class="mr-0 ml-5 rounded" type="search"
-                placeholder="Search">
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+
+            <!-- <input style="width: 250px; text-align: center;" class="mr-0 ml-5 rounded" type="search"
+              placeholder="Search"> -->
+
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span><i id="bar" class="fas fa-bars"></i></span>
+            </button> -->
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span><i id="bar" class="fas fa-bars"></i></span>
             </button>
 
             <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav mx-auto">
+                    <form class="d-flex">
+                        <input class="form-control" style="width: 250px;" type="search" placeholder="Search"
+                            aria-label="Search">
+                    </form>
                     <li class="nav-item">
                         <a {% if '/' in request.path %} class="nav-link" {% else %} class="nav-link" {% endif %}
                             href="{% url 'home' %}">Home </a>
                     </li>
                     <li class="nav-item">
-                        <a {% if 'store' in request.path %} class="nav-link active" {% else %} class="nav-link" {% endif %}
-                            href="{% url 'store' %}">Store</a>
+                        <a {% if 'store' in request.path %} class="nav-link active" {% else %} class="nav-link"
+                            {% endif %} href="{% url 'store' %}">Store</a>
                     </li>
                     <li class="nav-item">
-                        <a {% if 'about' in request.path %} class="nav-link active" {% else %} class="nav-link" {% endif %}
-                        href="{% url 'about' %}">About Us</a>
+                        <a {% if 'about' in request.path %} class="nav-link active" {% else %} class="nav-link"
+                            {% endif %} href="{% url 'about' %}">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'adminlogin' %}">Admin</a>
                     </li>
                     {% if not request.user.is_authenticated %}
                     <li class="nav-item">
-                        <a {% if 'userLogin' in request.path %} class="nav-link active" {% else %} class="nav-link" {% endif %}
-                        href="{% url 'userLogin' %}">Login</a>
+                        <a {% if 'userLogin' in request.path %} class="nav-link active" {% else %} class="nav-link"
+                            {% endif %} href="{% url 'userLogin' %}">Login</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a {% if 'cart' in request.path %} class="nav-link active" {% else %} class="nav-link" {% endif %}
-                        href="{% url 'cart' %}"><i class="fas fa-cart-arrow-down"></i></a>
+                        <a {% if 'cart' in request.path %} class="nav-link active" {% else %} class="nav-link"
+                            {% endif %} href="{% url 'cart' %}"><i class="fas fa-cart-arrow-down"></i></a>
                     </li>
-                    <li class="nav-item dropleft">
+                    <li class="nav-item dropstart">
+                        <a class="nav-link" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a style="cursor: default;" class="dropdown-item disabled" href="#">Welcome,
+                                {{ request.user.username }}</a>
+                            <a class="dropdown-item" href="{% url 'userDashboard' %}">Dash Board</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="javascript:{document.getElementById('logout').submit()}"
+                                style="text-decoration: none;" class="sign-out"><i class="fa fa-sign-out"></i>Logout</a>
+                            <form id="logout" action="{% url 'logout' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden">
+                            </form>
+                        </ul>
+                    </li>
+                    <!-- <li class="nav-item dropleft">
                         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user"></i>
@@ -57,7 +87,6 @@
                                 {{ request.user.username }}</a>
                             <a class="dropdown-item" href="{% url 'userDashboard' %}">Dash Board</a>
                             <div class="dropdown-divider"></div>
-                            <!-- <a class="dropdown-item" href="{% url 'logout' %}">Sign Out</a> -->
                             <a href="javascript:{document.getElementById('logout').submit()}"
                                 style="text-decoration: none;" class="sign-out"><i class="fa fa-sign-out"></i>Logout</a>
                             <form id="logout" action="{% url 'logout' %}" method="POST">
@@ -65,7 +94,7 @@
                                 <input type="hidden">
                             </form>
                         </div>
-                    </li>
+                    </li> -->
                     {% endif %}
                 </ul>
 
