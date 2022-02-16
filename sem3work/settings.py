@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'store.apps.StoreConfig',
     'cart.apps.CartConfig',
+    'bootstrapform',
 
 ]
 
@@ -143,7 +144,23 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 
+
+#Email setting
+# For Contact Us
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'dipeshnepali767@gmail.com'
+EMAIL_HOST_PASSWORD = 'dgrzrczsaqwoecsr'
+# EMAIL_USE_SSL =False
+# ACCOUNT_EMAIL_VERIFICATION ='none'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
