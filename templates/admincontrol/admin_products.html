@@ -1,89 +1,59 @@
 {% extends 'adminbase.html' %}
 {% load static %}
+{% block title %} Products {% endblock %}
 {% block content %}
 
 
-<head>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-    <style media="screen">
-        a:link {
-            text-decoration: none;
-        }
-
-        h6 {
-            text-align: center;
-        }
-
-        .row {
-            margin: 100px;
-        }
-
-        .float {
-            position: fixed;
-            width: 70px;
-            height: 70px;
-            bottom: 60px;
-            right: 60px;
-            background-color: red;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            box-shadow: 3px 3px 3px #999;
-        }
-
-        .my-float {
-            margin-top: 22px;
-        }
-    </style>
-</head>
-
-<div class="container">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h6 class="panel-title">Total Product List</h6>
+<div class="container-fluid">
+    <div class="row">
+        <div class="container-fluid px-0">
+            <img class="img-fluid" src="{% static '/img/test.jpg' %}" alt="Customer">
         </div>
-        <table class="table table-hover" id="dev-table">
-            <thead>
+        <h1 class="py-4" style="background-color: gray; color: #fff; text-align:center;">
+            PRODUCTS
+            <a href="{% url 'admin-add-product' %}">
+                <i class="fa fa-plus my-float btn btn-danger py-3"></i>
+            </a>
+        </h1>
+
+        <table class="table table-hover my-0 py-0">
+            <thead style="background-color: aqua;">
                 <tr>
                     <th>Name</th>
                     <th>Image</th>
                     <th>Category</th>
                     <th>Price</th>
-                    <th>Featured</th>
+                    
                     <th>Availability</th>
-                    <th>Description</th>
+                    
                     <th>Update</th>
                     <th>Delete</th>
                 </tr>
             </thead>
-            {% for p in products %}
-            {% if p %}
+            <tbody>
+                {% for p in products %}
 
-            <tr>
-                <td> {{p.name}}</td>
-                <td> <img src="{{ p.product_image.url }}" height="40px" width="40px" /></td>
-                <td>{{p.category}}</td>
-                <td>{{p.price}}</td>
-                <td>{{p.is_featured}}</td>
-                <td>{{p.available}}</td>
-                <td>{{p.description}}</td>
-                <td><a class="btn btn-primary btn-xs" href="{% url 'update-product' p.id  %}"><span
-                            class="glyphicon glyphicon-edit"></span></a></td>
-                <td><a class="btn btn-danger btn-xs" href="{% url 'delete-product' p.id  %}"><span
-                            class="glyphicon glyphicon-trash"></span></a></td>
+                <tr style="background-color: wheat;">
+                    <td> {{p.name}}</td>
+                    <td> <img src="{{ p.product_image.url }}" height="40px" width="40px" /></td>
+                    <td>{{p.category}}</td>
+                    <td>{{p.price}}</td>
+                    
+                    <td>{{p.available}}</td>
+                    
+                    <td><a class="btn btn-primary btn-xs" href="{% url 'update-product' p.id  %}"><span
+                                class="glyphicon glyphicon-edit">UPDATE</span></a></td>
+                    <td><a class="btn btn-danger btn-xs" href="{% url 'delete-product' p.id  %}"><span
+                                class="glyphicon glyphicon-trash">DELETE</span></a></td>
 
 
-            </tr>
-            {% else %}
-            <br><br><br>
-            <h1>no products</h1>
-            {% endif %}
-            {% endfor %}
+                </tr>
+                {% endfor %}
+
+            </tbody>
         </table>
     </div>
+
     <!-- PAGINATION STARTS -->
     <nav aria-label="..." class="container pt-5">
         {% if products.has_other_pages %}
@@ -109,8 +79,7 @@
 
             {% if products.has_next %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ products.next_page_number }}"><i
-                        class="fas fa-angle-right"></i></a>
+                <a class="page-link" href="?page={{ products.next_page_number }}"><i class="fas fa-angle-right"></i></a>
             </li>
             {% else %}
             <li class="page-item disabled">
@@ -122,8 +91,4 @@
     </nav>
     <!-- PAGINATION ENDS -->
 </div>
-<!-- add product floating button -->
-<a href="{% url 'admin-add-product' %}" class="float">
-    <i class="fa fa-plus my-float"></i>
-</a>
 {% endblock content %}
