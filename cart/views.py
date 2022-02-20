@@ -41,6 +41,7 @@ def add_cart(request, product_id):
 
         return redirect('store')
 
+@login_required(login_url='userLogin')
 def cart(request, cart_items=None):
     try:
         if request.user.is_authenticated:
@@ -58,20 +59,23 @@ def cart(request, cart_items=None):
 
     return render(request, 'store/cart.html', context)
 
-
+@login_required(login_url='userLogin')
 def remove_cart_item(request, cart_item_id):
     cart_item = CartItem.objects.get(id=cart_item_id)
     cart_item.delete()
     messages.success(request, "Item Sucessfully Removed")
     return redirect('cart')
 
+@login_required(login_url='userLogin')
 def payment(request):
     return render(request, 'store/payment.html')
 
+
+@login_required(login_url='userLogin')
 def completeOrder(request):
     return render(request, 'store/ordercomplete.html')
 
-
+@login_required(login_url='userLogin')
 def purchaseitem(request, product_id):
     if request.method == "POST":
         current_user = request.user

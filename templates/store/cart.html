@@ -46,19 +46,7 @@
             display: inline-block;
         }
 
-        .cart-qty-plus,
-        .cart-qty-minus {
-            width: 38px;
-            height: 38px;
-            background-color: #fff;
-            border: 1px solid #ced4da;
-        }
-
-        .cart-qty-plus:hover,
-        .cart-qty-minus:hover {
-            background-color: #88BE4C;
-            color: black;
-        }
+        
 
         .img-prdct {
             width: 50px;
@@ -84,17 +72,6 @@
             height: 150px;
         }
 
-        .cart-qty-plus {
-            background-color: #00a5e8;
-            color: white;
-            font-weight: 600;
-        }
-
-        .cart-qty-minus {
-            background-color: #00a5e8;
-            color: white;
-            font-weight: 600;
-        }
 
         tbody td .fas {
             cursor: pointer;
@@ -102,20 +79,6 @@
 
         tbody td .fas:hover {
             color: red;
-        }
-
-        #purchase {
-            color: #fff;
-            background-color: black;
-            border-radius: 5px;
-            padding: 0 20px;
-            transition: 0.3s ease;
-            text-decoration: none;
-        }
-
-        #purchase:hover {
-            color: black;
-            background-color: coral;
         }
     </style>
 </head>
@@ -160,7 +123,7 @@
                                     {% csrf_token %}
                                     <input type="hidden" name="cart_item_id" value="{{ p.id }}">
                                     <!-- <a id="purchase" href="{% url 'purchaseitem' p.id %}" style="text-decoration: none;">Checkout</a> -->
-                                    <button type="submit"> Order! </button>
+                                    <button style="background-color: coral; width: 120px;" type="submit" class="text-uppercase"> Order! </button>
                                 </form>
                             </td>
                         </tr>
