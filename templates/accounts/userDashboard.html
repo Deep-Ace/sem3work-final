@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% block title %} {{ request.user.first_name }} Dashboard {% endblock %}
 {% block content %}
 
 <head>
@@ -51,7 +51,7 @@
                 Edit My Profile</a> <br>
             <a href="{% url 'my-order' request.user.id %}" type="button" class="btn btn-sm btn-info" style="margin-top: 30px;">
                 View My Orders</a>
-            <a class="btn btn-sm btn-danger" href="{% url 'deleteuser' request.user.id %}"
+            <a class="btn btn-sm btn-danger" href="{% url 'deleteuser' request.user.id %}" onclick="return confirm('Are your sure you want to delete your account? The action cannot be reversed!!!');"
                 style="float: right; margin-top: 30px;">Delete</a>
         </div>
         

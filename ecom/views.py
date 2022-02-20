@@ -4,6 +4,7 @@ from django.core.mail import send_mail
 from django.contrib import messages
 
 # Create your views here.
+
 def home(request):
     # For showing featured Products
     featured_product = models.Product.objects.filter(is_featured=True)
@@ -32,6 +33,3 @@ def contact(request):
         )
         messages.success(request, "Thanks for sending the message! We'll get back to you later")
         return render(request, 'pages/home.html')
-
-    # else:
-    #     return render(request, 'pages/contact.html' , {})

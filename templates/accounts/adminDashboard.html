@@ -6,13 +6,13 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="card col-lg-4 col-md-4" style="background-color: #5bc0de;">
+        <div class="card col-lg-4 col-md-4" style="background-color: #ededed;">
             <div>
                 <img style="height: 150px; width: 150px; float: left;" src="{% static '/img/customers.png'  %}"
                     class="card-img-top mx-3" alt="">
                 <!-- <h3 style="float: left;" class="mt-5 mx-5 pt-2">TOTAL: <span>{{ usercount }}</span></h3> -->
 
-                <button type="button" class="btn btn-secondary mt-5 mx-5 pt-2" style="width: 150px; float: left;">
+                <button type="button" class="btn btn-dark mt-5 mx-5 pt-2" style="width: 150px; float: left;">
                     TOTAL <span class="badge bg-danger">{{ usercount }}</span>
                 </button>
             </div>
@@ -22,16 +22,16 @@
                 </center>
                 <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                     card's content.</p> -->
-                <a href="{% url 'view-customer' %}" class="btn btn-secondary d-flex justify-content-center">View
+                <a href="{% url 'view-customer' %}" class="btn btn-dark d-flex justify-content-center">View
                     Customers</a>
             </div>
         </div>
-        <div class="card col-lg-4 col-md-4" style="background-color: #5bc0de;">
+        <div class="card col-lg-4 col-md-4" style="background-color: #ededed;">
             <div>
                 <img style="height: 150px; width: 150px; float: left;" src="{% static '/img/booking.png'  %}"
                     class="card-img-top mx-3" alt="">
                 <!-- <h3 style="float: left;" class="mt-5 mx-5 pt-2">TOTAL: <span>{{ ordercount }}</span></h3> -->
-                <button type="button" class="btn btn-secondary mt-5 mx-5 pt-2" style="width: 150px; float: left;">
+                <button type="button" class="btn btn-dark mt-5 mx-5 pt-2" style="width: 150px; float: left;">
                     TOTAL <span class="badge bg-danger">{{ ordercount }}</span>
                 </button>
             </div>
@@ -41,16 +41,16 @@
                 </center>
                 <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                     card's content.</p> -->
-                <a href="{% url 'admin-view-booking' %}" class="btn btn-secondary d-flex justify-content-center">View
+                <a href="{% url 'admin-view-booking' %}" class="btn btn-dark d-flex justify-content-center">View
                     Bookings</a>
             </div>
         </div>
-        <div class="card col-lg-4 col-md-4" style="background-color: #5bc0de;">
+        <div class="card col-lg-4 col-md-4" style="background-color: #ededed;">
             <div>
                 <img style="height: 150px; width: 150px; float: left;" src="{% static '/img/products.png'  %}"
                     class="card-img-top mx-3" alt="">
                 <!-- <h3 style="float: left;" class="mt-5 mx-5 pt-2">TOTAL: <span>{{ productcount }}</span></h3> -->
-                <button type="button" class="btn btn-secondary mt-5 mx-5 pt-2" style="width: 150px; float: left;">
+                <button type="button" class="btn btn-dark mt-5 mx-5 pt-2" style="width: 150px; float: left;">
                     TOTAL <span class="badge bg-danger">{{ productcount }}</span>
                 </button>
             </div>
@@ -60,7 +60,7 @@
                 </center>
                 <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                     card's content.</p> -->
-                <a href="{% url 'admin-products' %}" class="btn btn-secondary d-flex justify-content-center">View
+                <a href="{% url 'admin-products' %}" class="btn btn-dark d-flex justify-content-center">View
                     Products</a>
             </div>
         </div>
@@ -71,10 +71,10 @@
 
 <div class="container-fluid">
     <div class="row">
-        <h1 class="py-4" style="background-color: gray; color: #fff; text-align:center;">RECENT BOOKINGS</h1>  
+        <h1 class="py-4" style="background-color: rgb(97, 94, 94); color: #fff; text-align:center;">RECENT BOOKINGS</h1>  
 
         <table class="table table-hover my-0 py-0">
-            <thead style="background-color: aqua;">
+            <thead style="background-color: #fff;">
                 <tr>
                     <th>Customer Name</th>
                     <th>Customer Email</th>
@@ -85,7 +85,7 @@
             </thead>
             <tbody>
             {% for od in order %}
-            <tr style="background-color: wheat;">
+            <tr style="background-color: #bbb;">
                 <td>{{ od.user.first_name }} {{ od.user.last_name }}</td>
                 <td>{{ od.user.email }}</td>
                 <td>{{ od.product.name }}</td>
