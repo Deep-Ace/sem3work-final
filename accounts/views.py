@@ -248,9 +248,11 @@ def delete_user(request, user_id):
 def my_order_view(request, id):
     user = User.objects.get(id=id)
     order = Orders.objects.all()
-
+    paginator = Paginator(order, 5)
+    page = request.GET.get('page')
+    paged_product = paginator.get_page(page)
     data = {
-        'order':order
+        'order':paged_product,
     }
 
 
