@@ -1,34 +1,19 @@
 {% extends 'adminbase.html' %}
 {% load static %}
+{% block title %} Users {% endblock %}
 {% block content %}
 
-
-<head>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-    <style media="screen">
-        a:link {
-            text-decoration: none;
-        }
-
-        h6 {
-            text-align: center;
-        }
-
-        .row {
-            margin: 100px;
-        }
-    </style>
-</head>
-<div class="container">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h6 class="panel-title">Total Customer List</h6>
+<div class="container-fluid">
+    <div class="row">
+        <div class="container-fluid px-0">
+            <img class="img-fluid" src="{% static '/img/test.jpg' %}" alt="Customer">
+           
         </div>
-        <table class="table table-hover" id="dev-table">
-            <thead>
+        
+        <h1 class="py-4" style="background-color: gray; color: #fff; text-align:center;">CUSTOMERS</h1>
+
+        <table class="table table-hover my-0 py-0">
+            <thead style="background-color: aqua;">
                 <tr>
                     <th>User Name</th>
                     <th>First Name</th>
@@ -37,16 +22,20 @@
                     <th>Delete</th>
                 </tr>
             </thead>
-            {% for c in users %}
-            <tr>
-                <td> {{c.username}}</td>
-                <td> {{c.first_name}}</td>
-                <td> {{c.last_name}}</td>
-                <td>{{c.email}}</td>
-                <td><a class="btn btn-danger btn-xs" href="{% url 'delete-customer' c.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+            <tbody>
+                {% for c in users %}
+                <tr style="background-color: wheat;">
+                    <td> {{c.username}}</td>
+                    <td> {{c.first_name}}</td>
+                    <td> {{c.last_name}}</td>
+                    <td>{{c.email}}</td>
+                    <td><a class="btn btn-danger btn-xs" href="{% url 'delete-customer' c.id  %}">
+                        <span class="glyphicon glyphicon-trash">DELETE</span></a></td>
 
-            </tr>
-            {% endfor %}
+                </tr>
+                {% endfor %}
+
+            </tbody>
         </table>
     </div>
     <!-- PAGINATION STARTS -->
@@ -55,8 +44,7 @@
         <ul class="pagination">
             {% if users.has_previous %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ users.previous_page_number }}"><i
-                        class="fas fa-angle-left"></i></a>
+                <a class="page-link" href="?page={{ users.previous_page_number }}"><i class="fas fa-angle-left"></i></a>
             </li>
             {% else %}
             <li class="page-item disabled">
@@ -74,8 +62,7 @@
 
             {% if users.has_next %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ users.next_page_number }}"><i
-                        class="fas fa-angle-right"></i></a>
+                <a class="page-link" href="?page={{ users.next_page_number }}"><i class="fas fa-angle-right"></i></a>
             </li>
             {% else %}
             <li class="page-item disabled">

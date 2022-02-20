@@ -40,21 +40,16 @@ urlpatterns = [
     path('logoutadmin', views.logoutadmin, name='logoutadmin'),
 
     path('admin-products', views.admin_products_view, name='admin-products'),
-    path('admin-add-product', views.admin_add_product_view,
-         name='admin-add-product'),
-    path('delete-product/<int:pk>',
-         views.delete_product_view, name='delete-product'),
-    path('update-product/<int:pk>',
-         views.update_product_view, name='update-product'),
+    path('admin-add-product', views.admin_add_product_view, name='admin-add-product'),
+    path('delete-product/<int:pk>',views.delete_product_view, name='delete-product'),
+    path('update-product/<int:pk>',views.update_product_view, name='update-product'),
 
-    path('admin-view-booking', views.admin_view_booking_view,
-         name='admin-view-booking'),
+    path('admin-view-booking', views.admin_view_booking_view, name='admin-view-booking'),
     path('update-order/<int:pk>', views.update_order_view, name='update-order'),
     path('delete-order/<int:pk>', views.delete_order_view, name='delete-order'),
 
     path('view-customer', views.view_customer, name='view-customer'),
-    path('delete-customer/<int:pk>',
-         views.delete_customer_view, name='delete-customer'),
+    path('delete-customer/<int:pk>',views.delete_customer_view, name='delete-customer'),
 
     # User Related Views
     path('edit-profile', views.edit_profile_view, name='edit-profile'),
