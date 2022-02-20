@@ -12,16 +12,6 @@
                 <img src="{% static 'img/logo.png' %}" alt="" class="logo">
             </a>
 
-
-
-            <!-- <input style="width: 250px; text-align: center;" class="mr-0 ml-5 rounded" type="search"
-              placeholder="Search"> -->
-
-            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span><i id="bar" class="fas fa-bars"></i></span>
-            </button> -->
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -77,24 +67,6 @@
                             </form>
                         </ul>
                     </li>
-                    <!-- <li class="nav-item dropleft">
-                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-user"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a style="cursor: default;" class="dropdown-item disabled" href="#">Welcome,
-                                {{ request.user.username }}</a>
-                            <a class="dropdown-item" href="{% url 'userDashboard' %}">Dash Board</a>
-                            <div class="dropdown-divider"></div>
-                            <a href="javascript:{document.getElementById('logout').submit()}"
-                                style="text-decoration: none;" class="sign-out"><i class="fa fa-sign-out"></i>Logout</a>
-                            <form id="logout" action="{% url 'logout' %}" method="POST">
-                                {% csrf_token %}
-                                <input type="hidden">
-                            </form>
-                        </div>
-                    </li> -->
                     {% endif %}
                 </ul>
 

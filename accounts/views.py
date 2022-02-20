@@ -1,22 +1,16 @@
 from django.shortcuts import render, redirect
 from . import forms, models
 from django.contrib import messages, auth
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from cart.models import Orders
 from cart import forms
 from accounts.forms import UserForm, ProductForm
 from django.core.paginator import Paginator
+
 # Create your views here.
-
-# for showing login button for admin(by sumit)
-# def adminclick_view(request):
-#     if request.user.is_authenticated:
-#         return HttpResponseRedirect('afterlogin')
-#     return HttpResponseRedirect('adminlogin')
-
 
 def userLogin(request):
     if request.method == 'POST':
@@ -26,7 +20,7 @@ def userLogin(request):
 
         if user is not None:
             auth.login(request, user)
-            messages.success(request, 'You are now logged in.')
+            # messages.success(request, 'You are now logged in.')
             return redirect('home')
         else:
             messages.error(request, "Invalid login credentials")
@@ -54,8 +48,6 @@ def userRegister(request):
                     user = User.objects.create_user(
                         first_name=firstname, last_name=lastname, email=email, username=username, password=password)
                     auth.login(request, user)
-                    # messages.success(request, "You are now logged in.")
-                    # return redirect('dashboard')
                     user.save()
                     messages.success(
                         request, 'You are registered successfully')
@@ -66,8 +58,6 @@ def userRegister(request):
             return redirect('userRegister')
     else:
         return render(request, 'accounts/userRegister.html')
-
-# for checking user is user
 
 
 @login_required(login_url='userLogin')
@@ -89,18 +79,12 @@ def logoutadmin(request):
             auth.logout(request)
             messages.success(request, 'You are successfully logged out.')
             return redirect('adminlogin')
-        # else:
-        #     messages.success(request, 'You are successfully logged out.')
-        #     return redirect('userLogin')
     return redirect('home')
 
 
 def resetPass(request):
     return render(request, 'accounts/password_reset_form.html')
 
-
-# def is_customer(user):
-#     return user.groups.filter(name='CUSTOMER').exists()
 
 @login_required
 def afterlogin_view(request):
@@ -109,24 +93,7 @@ def afterlogin_view(request):
     else:
         messages.error(request, "Invalid login credentials")
         return redirect('adminlogin')
-    # if request.method == 'POST':
-    #     username = request.POST['username']
-    #     password = request.POST['password']
-    #     user = auth.authenticate(username=username, password=password)
 
-    #     if user.is_superuser:
-    #         auth.login(request, user)
-    #         messages.success(request, 'You are now logged in.')
-    #         return redirect('adminDashboard')
-    #     else:
-    #         messages.error(request, "Invalid login credentials")
-    #         return redirect('adminlogin')
-    # return render(request, 'accounts/adminlogin.html')
-
-    # if request.user.is_superuser.exists:
-    #     return redirect('adminDashboard')
-    # else:
-    #     return redirect('userDashboard')
 
 
 @login_required(login_url='afterlogin')
@@ -138,7 +105,7 @@ def adminDashboard(request):
         ordercount = Orders.objects.all().count()
         # For Pagination
         order = Orders.objects.all()
-        paginator = Paginator(order, 3)
+        paginator = Paginator(order, 10)
         page = request.GET.get('page')
         paged_product = paginator.get_page(page)
         mydict = {
@@ -151,16 +118,13 @@ def adminDashboard(request):
     else:
         messages.error(request, "Invalid login credentials")
         return redirect('adminlogin')
-    # return render(request, 'accounts/adminDashboard.html')
+
 
 # admin view the total product in the dashbaord
-
-
 @login_required(login_url='adminlogin')
 def admin_products_view(request):
     products = models.Product.objects.all()
     products=models.Product.objects.order_by('-name')
-    # products=models.Product.objects.filter(available='In Stock')
     paginator = Paginator(products, 1)
     page = request.GET.get('page')
     paged_product = paginator.get_page(page)
@@ -170,9 +134,7 @@ def admin_products_view(request):
 
     return render(request, 'admincontrol/admin_products.html', data)
 
-# admin add product by clicking on floating button
-
-
+# admin add product by clicking on + button
 @login_required(login_url='adminlogin')
 def admin_add_product_view(request):
     products = models.Product.objects.all()
@@ -214,14 +176,6 @@ def admin_view_booking_view(request):
     data = {
         'order': paged_product,
     }
-    # ordered_products=[]
-    # ordered_bys=[]
-    # for order in orders:
-    #     ordered_product=models.Product.objects.all().filter(id=order.product.id)
-    #     ordered_by=models.Customer.objects.all().filter(id = order.customer.id)
-    #     ordered_products.append(ordered_product)
-    #     ordered_bys.append(ordered_by)
-    # ,{'data':zip(ordered_products,ordered_bys,orders)}
     return render(request, 'admincontrol/booking.html', data)
 
 
@@ -265,7 +219,7 @@ def delete_customer_view(request,pk):
 
 @login_required(login_url='userLogin')
 def edit_profile_view(request):
-    user = models.User.objects.get(id=request.user.id)
+    user = User.objects.get(id=request.user.id)
     userForm = UserForm(instance=user)
     mydict = {
         'userForm': userForm,
@@ -276,8 +230,6 @@ def edit_profile_view(request):
         if userForm.is_valid():
             user.set_password(user.password)
             userForm.save()
-            # user.set_password(user.password)
-            # user.save()
             messages.success(request, "Account Sucessfully Updated")
             return HttpResponseRedirect('userDashboard')
 
@@ -296,15 +248,10 @@ def delete_user(request, user_id):
 def my_order_view(request, id):
     user = User.objects.get(id=id)
     order = Orders.objects.all()
-    # order = Orders.objects.all().filter(id=user.id)
 
     data = {
         'order':order
     }
-    # ordered_products=[]
-    # for order in orders:
-    #     ordered_product=models.Product.objects.all().filter(id=order.product.id)
-    #     ordered_products.append(ordered_product)
-    # {'data': zip(ordered_products, orders)}
+
 
     return render(request, 'usercontrol/myorder.html', data)

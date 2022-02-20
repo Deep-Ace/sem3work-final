@@ -1,11 +1,10 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Cart, CartItem, Product, Orders
-from accounts import forms, models
+
 
 # Create your views here.
-
 
 def _cart_id(request):
     cart_id = request.session.session_key
@@ -42,7 +41,7 @@ def add_cart(request, product_id):
 
         return redirect('store')
 
-def cart(request, total=0.0, quantity=0, cart_items=None):
+def cart(request, cart_items=None):
     try:
         if request.user.is_authenticated:
             cart_items = CartItem.objects.all().filter(user=request.user)
@@ -72,19 +71,12 @@ def payment(request):
 def completeOrder(request):
     return render(request, 'store/ordercomplete.html')
 
-# def purchaseitem(request, cart_item_id):
-#     cart_item = CartItem.objects.get(id=cart_item_id)
-#     cart_item.delete()
-#     messages.success(request, "Item Sucessfully Bought")
-#     return redirect('cart')
 
 def purchaseitem(request, product_id):
     if request.method == "POST":
         current_user = request.user
         product = Product.objects.get(id=product_id)
-
-
-
+        
         order = Orders(user=current_user, product=product)
         order.save()
 
