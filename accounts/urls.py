@@ -28,10 +28,8 @@ urlpatterns = [
              template_name='accounts/password_reset_complete.html'),
          name='password_reset_complete'),
 
-
     # Important Function Defined
     path('afterlogin', views.afterlogin_view, name='afterlogin'),
-
 
     # Admin Related Views
     path('adminDashboard', views.adminDashboard, name='adminDashboard'),

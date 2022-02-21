@@ -20,10 +20,10 @@
 
             <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto">
-                    <form class="d-flex">
+                    <!-- <form class="d-flex">
                         <input class="form-control" style="width: 250px;" type="search" placeholder="Search"
                             aria-label="Search">
-                    </form>
+                    </form> -->
                     <li class="nav-item">
                         <a {% if '/' in request.path %} class="nav-link" {% else %} class="nav-link" {% endif %}
                             href="{% url 'home' %}">Home </a>

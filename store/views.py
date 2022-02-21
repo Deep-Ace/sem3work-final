@@ -7,7 +7,7 @@ from django.core.paginator import Paginator
 def store(request):
     products=models.Product.objects.order_by('-name')
 
-    paginator = Paginator(products, 1)
+    paginator = Paginator(products, 4)
     page = request.GET.get('page')
     paged_product = paginator.get_page(page)
     data = {
