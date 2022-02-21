@@ -1,4 +1,3 @@
-import imp
 from django.test import TestCase
 from django.urls import reverse,resolve
 from django.test import Client, SimpleTestCase, TestCase
