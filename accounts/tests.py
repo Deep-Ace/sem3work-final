@@ -9,6 +9,8 @@ from cart.views import cart, add_cart, remove_cart_item, purchaseitem, payment, 
 
 from ecom.views import home, about, contact
 
+from store.views import store
+
 # Create your tests here.
 class TestUrls(SimpleTestCase):
     def test_case_register_url(self):
@@ -156,4 +158,35 @@ class TestUrls(SimpleTestCase):
         print(resolve(url))
         self.assertEquals(resolve(url).func,about)
     
+    def test_case_store_url(self):
+        url=reverse("store")
+        print(resolve(url))
+        self.assertEquals(resolve(url).func,store)
 
+
+# Test Cases for views
+class TestViews(TestCase):
+    def setUp(self):
+        self.client=Client()
+    
+    def test_store_views(self):
+        response=self.client.get(reverse('store'))
+        self.assertEquals(response.status_code,200)
+        self.assertTemplateUsed(response,'store/store.html')
+    
+    def test_about_views(self):
+        response=self.client.get(reverse('about'))
+        self.assertEquals(response.status_code,200)
+        self.assertTemplateUsed(response,'pages/about.html')
+    
+    def test_userLogin_views(self):
+        response=self.client.get(reverse('userLogin'))
+        self.assertEquals(response.status_code,200)
+        self.assertTemplateUsed(response,'accounts/userLogin.html')
+    
+    def test_userRegister_views(self):
+        response=self.client.get(reverse('userRegister'))
+        self.assertEquals(response.status_code,200)
+        self.assertTemplateUsed(response,'accounts/userRegister.html')
+    
+    

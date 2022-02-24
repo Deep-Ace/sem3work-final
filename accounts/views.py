@@ -125,7 +125,7 @@ def adminDashboard(request):
 def admin_products_view(request):
     products = models.Product.objects.all()
     products=models.Product.objects.order_by('-name')
-    paginator = Paginator(products, 1)
+    paginator = Paginator(products, 10)
     page = request.GET.get('page')
     paged_product = paginator.get_page(page)
     data = {
