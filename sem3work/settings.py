@@ -88,7 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'sem3work_db',
         'USER': 'postgres',
-        'PASSWORD': 'IRONman@123',
+        'PASSWORD': 'admin',
         'HOST': 'localhost',
     }
 }
