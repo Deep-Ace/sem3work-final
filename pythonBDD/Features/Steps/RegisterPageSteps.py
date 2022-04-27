@@ -57,6 +57,7 @@ def step_impl(context):
 def step_impl(context):
     registerpage.clickOnRegister()
     mylogger.info("*****Register Button Clicked*****")
+    time.sleep(5)
 
 @then(u'verify the rpage title')
 def step_impl(context):
