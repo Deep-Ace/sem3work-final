@@ -1,38 +1,39 @@
-26-Apr-22 23:26:51 -
+27-Apr-22 14:56:34 -
 
-26-Apr-22 23:26:51 -====== WebDriver manager ======
-26-Apr-22 23:26:52 -Current google-chrome version is 100.0.4896
-26-Apr-22 23:26:52 -Get LATEST chromedriver version for 100.0.4896 google-chrome
-26-Apr-22 23:26:52 -Driver [C:\Users\dipes\.wdm\drivers\chromedriver\win32\100.0.4896.60\chromedriver.exe] found in cache
-26-Apr-22 23:26:53 -*****Driver Initialised*****
-26-Apr-22 23:26:55 -*****Browser Launched*****
-26-Apr-22 23:26:55 -*****Title Matched*****
-26-Apr-22 23:26:55 -*****Browser Closed*****
-26-Apr-22 23:26:57 -
-
-26-Apr-22 23:26:57 -====== WebDriver manager ======
-26-Apr-22 23:26:58 -Current google-chrome version is 100.0.4896
-26-Apr-22 23:26:58 -Get LATEST chromedriver version for 100.0.4896 google-chrome
-26-Apr-22 23:26:58 -Driver [C:\Users\dipes\.wdm\drivers\chromedriver\win32\100.0.4896.60\chromedriver.exe] found in cache
-26-Apr-22 23:26:59 -*****Driver Initialised*****
-26-Apr-22 23:27:01 -*****Browser Launched*****
-26-Apr-22 23:27:01 -*****Passing Credentials*****
-26-Apr-22 23:27:04 -*****Credentials Entered Successfully*****
-26-Apr-22 23:27:05 -*****Login Button Clicked*****
-26-Apr-22 23:27:05 -*****Title Matched*****
-26-Apr-22 23:27:05 -*****Browser Closed*****
-0\chromedriver.exe] found in cache
+27-Apr-22 14:56:34 -====== WebDriver manager ======
+27-Apr-22 14:56:34 -Current google-chrome version is 100.0.4896
+27-Apr-22 14:56:34 -Get LATEST chromedriver version for 100.0.4896 google-chrome
+27-Apr-22 14:56:34 -Driver [C:\Users\dipes\.wdm\drivers\chromedriver\win32\100.0.4896.60\chromedriver.exe] found in cache
+27-Apr-22 14:56:36 -*****Driver Initialised*****
+27-Apr-22 14:56:38 -*****Browser Launched*****
+27-Apr-22 14:56:38 -*****Passing Credentials*****
+27-Apr-22 14:56:41 -*****Credentials Entered Successfully*****
+27-Apr-22 14:56:41 -*****Terms Accepted*****
+27-Apr-22 14:56:41 -*****Register Button Clicked*****
+27-Apr-22 14:56:41 -*****Title Matched*****
+27-Apr-22 14:56:42 -*****Browser Closed*****
+win32\100.0.4896.60\chromedriver.exe] found in cache
+*****Driver Initialised*****
 *****Driver Initialised*****
 *****Driver Initialised*****
 *****Browser Launched*****
 *****Browser Launched*****
+*****Browser Launched*****
+*****Passing Credentials*****
 *****Passing Credentials*****
 *****Passing Credentials*****
 *****Credentials Entered Successfully*****
 *****Credentials Entered Successfully*****
-*****Login Button Clicked*****
-*****Login Button Clicked*****
+*****Credentials Entered Successfully*****
+*****Terms Accepted*****
+*****Terms Accepted*****
+*****Terms Accepted*****
+*****Register Button Clicked*****
+*****Register Button Clicked*****
+*****Register Button Clicked*****
 *****Title Matched*****
 *****Title Matched*****
+*****Title Matched*****
+*****Browser Closed*****
 *****Browser Closed*****
 *****Browser Closed*****

@@ -43,7 +43,7 @@ $(function () {
 		});
 		$("#passeye-toggle-" + i).on("click", function () {
 			if ($this.hasClass("show")) {
-				$this.attr('type', 'password');
+				$this.attr('type', 'cpassword');
 				$this.removeClass("show");
 				$(this).removeClass("btn-outline-primary");
 			} else {

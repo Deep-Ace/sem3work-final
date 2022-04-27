@@ -2,6 +2,7 @@ class LoginPage:
     txt_username_id = "username"
     txt_password_id = "password"
     btn_login_xpath = "/html/body/section/div/div/div/div[1]/div/form/div[3]/button"
+    btn_create_xpath = "/html/body/section/div/div/div/div[1]/div/form/div[4]/a"
 
     def __init__(self, driver):
         self.driver = driver
@@ -14,4 +15,7 @@ class LoginPage:
 
     def clickOnLogin(self):
         self.driver.find_element_by_xpath(self.btn_login_xpath).click()
+
+    def clickOnCreate(self):
+        self.driver.find_element_by_xpath(self.btn_create_xpath).click()
 
