@@ -1,39 +1,63 @@
-27-Apr-22 14:56:34 -
+27-Apr-22 15:27:39 -
 
-27-Apr-22 14:56:34 -====== WebDriver manager ======
-27-Apr-22 14:56:34 -Current google-chrome version is 100.0.4896
-27-Apr-22 14:56:34 -Get LATEST chromedriver version for 100.0.4896 google-chrome
-27-Apr-22 14:56:34 -Driver [C:\Users\dipes\.wdm\drivers\chromedriver\win32\100.0.4896.60\chromedriver.exe] found in cache
-27-Apr-22 14:56:36 -*****Driver Initialised*****
-27-Apr-22 14:56:38 -*****Browser Launched*****
-27-Apr-22 14:56:38 -*****Passing Credentials*****
-27-Apr-22 14:56:41 -*****Credentials Entered Successfully*****
-27-Apr-22 14:56:41 -*****Terms Accepted*****
-27-Apr-22 14:56:41 -*****Register Button Clicked*****
-27-Apr-22 14:56:41 -*****Title Matched*****
-27-Apr-22 14:56:42 -*****Browser Closed*****
-win32\100.0.4896.60\chromedriver.exe] found in cache
+27-Apr-22 15:27:39 -====== WebDriver manager ======
+27-Apr-22 15:27:39 -Current google-chrome version is 100.0.4896
+27-Apr-22 15:27:39 -Get LATEST chromedriver version for 100.0.4896 google-chrome
+27-Apr-22 15:27:40 -Driver [C:\Users\dipes\.wdm\drivers\chromedriver\win32\100.0.4896.60\chromedriver.exe] found in cache
+27-Apr-22 15:27:41 -*****Driver Initialised*****
+27-Apr-22 15:27:42 -*****Browser Launched*****
+27-Apr-22 15:27:42 -*****Passing Credentials*****
+27-Apr-22 15:27:46 -*****Credentials Entered Successfully*****
+27-Apr-22 15:27:46 -*****Login Button Clicked*****
+27-Apr-22 15:27:46 -*****Title Matched*****
+27-Apr-22 15:27:49 -*****Clicking Profile Icon*****
+27-Apr-22 15:27:50 -*****Profile Button Clicked*****
+27-Apr-22 15:27:50 -*****Clicking Logout Button*****
+27-Apr-22 15:27:53 -*****Logout Button Clicked*****
+27-Apr-22 15:27:56 -*****Browser Closed*****
+edriver.exe] found in cache
+Driver [C:\Users\dipes\.wdm\drivers\chromedriver\win32\100.0.4896.60\chromedriver.exe] found in cache
+*****Driver Initialised*****
 *****Driver Initialised*****
 *****Driver Initialised*****
 *****Driver Initialised*****
 *****Browser Launched*****
 *****Browser Launched*****
 *****Browser Launched*****
+*****Browser Launched*****
+*****Passing Credentials*****
 *****Passing Credentials*****
 *****Passing Credentials*****
 *****Passing Credentials*****
 *****Credentials Entered Successfully*****
 *****Credentials Entered Successfully*****
 *****Credentials Entered Successfully*****
-*****Terms Accepted*****
-*****Terms Accepted*****
-*****Terms Accepted*****
-*****Register Button Clicked*****
-*****Register Button Clicked*****
-*****Register Button Clicked*****
+*****Credentials Entered Successfully*****
+*****Login Button Clicked*****
+*****Login Button Clicked*****
+*****Login Button Clicked*****
+*****Login Button Clicked*****
 *****Title Matched*****
 *****Title Matched*****
 *****Title Matched*****
+*****Title Matched*****
+*****Clicking Profile Icon*****
+*****Clicking Profile Icon*****
+*****Clicking Profile Icon*****
+*****Clicking Profile Icon*****
+*****Profile Button Clicked*****
+*****Profile Button Clicked*****
+*****Profile Button Clicked*****
+*****Profile Button Clicked*****
+*****Clicking Logout Button*****
+*****Clicking Logout Button*****
+*****Clicking Logout Button*****
+*****Clicking Logout Button*****
+*****Logout Button Clicked*****
+*****Logout Button Clicked*****
+*****Logout Button Clicked*****
+*****Logout Button Clicked*****
+*****Browser Closed*****
 *****Browser Closed*****
 *****Browser Closed*****
 *****Browser Closed*****
