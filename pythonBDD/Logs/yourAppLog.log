@@ -1,23 +1,26 @@
-27-Apr-22 16:51:45 -
+10-May-22 20:20:09 -
 
-27-Apr-22 16:51:45 -====== WebDriver manager ======
-27-Apr-22 16:51:45 -Current google-chrome version is 100.0.4896
-27-Apr-22 16:51:45 -Get LATEST chromedriver version for 100.0.4896 google-chrome
-27-Apr-22 16:51:46 -Driver [C:\Users\dipes\.wdm\drivers\chromedriver\win32\100.0.4896.60\chromedriver.exe] found in cache
-27-Apr-22 16:51:47 -*****Driver Initialised*****
-27-Apr-22 16:51:48 -*****Browser Launched*****
-27-Apr-22 16:51:48 -*****Passing Credentials*****
-27-Apr-22 16:51:52 -*****Credentials Entered Successfully*****
-27-Apr-22 16:51:52 -*****Terms Accepted*****
-27-Apr-22 16:51:52 -*****Register Button Clicked*****
-27-Apr-22 16:51:57 -*****Title Matched*****
-27-Apr-22 16:51:57 -*****Browser Closed*****
-00.0.4896 google-chrome
-Driver [C:\Users\dipes\.wdm\drivers\chromedriver\win32\100.0.4896.60\chromedriver.exe] found in cache
-Driver [C:\Users\dipes\.wdm\drivers\chromedriver\win32\100.0.4896.60\chromedriver.exe] found in cache
-Driver [C:\Users\dipes\.wdm\drivers\chromedriver\win32\100.0.4896.60\chromedriver.exe] found in cache
-Driver [C:\Users\dipes\.wdm\drivers\chromedriver\win32\100.0.4896.60\chromedriver.exe] found in cache
-Driver [C:\Users\dipes\.wdm\drivers\chromedriver\win32\100.0.4896.60\chromedriver.exe] found in cache
+10-May-22 20:20:09 -====== WebDriver manager ======
+10-May-22 20:20:10 -Current google-chrome version is 101.0.4951
+10-May-22 20:20:10 -Get LATEST chromedriver version for 101.0.4951 google-chrome
+10-May-22 20:20:10 -Driver [C:\Users\dipes\.wdm\drivers\chromedriver\win32\101.0.4951.41\chromedriver.exe] found in cache
+10-May-22 20:20:12 -*****Driver Initialised*****
+10-May-22 20:20:15 -*****Browser Launched*****
+10-May-22 20:20:15 -*****Passing Credentials*****
+10-May-22 20:20:18 -*****Credentials Entered Successfully*****
+10-May-22 20:20:20 -*****Login Button Clicked*****
+10-May-22 20:20:20 -*****Title Matched*****
+10-May-22 20:20:23 -*****Clicking Add To Cart Button*****
+10-May-22 20:20:27 -*****Add To Cart Button Clicked*****
+10-May-22 20:20:27 -*****Clicking Cart Button*****
+10-May-22 20:20:32 -*****Cart Button Clicked*****
+10-May-22 20:20:32 -*****Title Matched*****
+10-May-22 20:20:32 -*****Click the Delete Button*****
+10-May-22 20:20:35 -*****Delete Button Clicked*****
+10-May-22 20:20:35 -*****Browser Closed***** 
+in cache
+Driver [C:\Users\dipes\.wdm\drivers\chromedriver\win32\101.0.4951.41\chromedriver.exe] found in cache
+Driver [C:\Users\dipes\.wdm\drivers\chromedriver\win32\101.0.4951.41\chromedriver.exe] found in cache
 *****Driver Initialised*****
 *****Driver Initialised*****
 *****Driver Initialised*****
@@ -38,21 +41,51 @@ Driver [C:\Users\dipes\.wdm\drivers\chromedriver\win32\100.0.4896.60\chromedrive
 *****Credentials Entered Successfully*****
 *****Credentials Entered Successfully*****
 *****Credentials Entered Successfully*****
-*****Terms Accepted*****
-*****Terms Accepted*****
-*****Terms Accepted*****
-*****Terms Accepted*****
-*****Terms Accepted*****
-*****Register Button Clicked*****
-*****Register Button Clicked*****
-*****Register Button Clicked*****
-*****Register Button Clicked*****
-*****Register Button Clicked*****
+*****Login Button Clicked*****
+*****Login Button Clicked*****
+*****Login Button Clicked*****
+*****Login Button Clicked*****
+*****Login Button Clicked*****
 *****Title Matched*****
 *****Title Matched*****
 *****Title Matched*****
 *****Title Matched*****
 *****Title Matched*****
+*****Clicking Add To Cart Button*****
+*****Clicking Add To Cart Button*****
+*****Clicking Add To Cart Button*****
+*****Clicking Add To Cart Button*****
+*****Clicking Add To Cart Button*****
+*****Add To Cart Button Clicked*****
+*****Add To Cart Button Clicked*****
+*****Add To Cart Button Clicked*****
+*****Add To Cart Button Clicked*****
+*****Add To Cart Button Clicked*****
+*****Clicking Cart Button*****
+*****Clicking Cart Button*****
+*****Clicking Cart Button*****
+*****Clicking Cart Button*****
+*****Clicking Cart Button*****
+*****Cart Button Clicked*****
+*****Cart Button Clicked*****
+*****Cart Button Clicked*****
+*****Cart Button Clicked*****
+*****Cart Button Clicked*****
+*****Title Matched*****
+*****Title Matched*****
+*****Title Matched*****
+*****Title Matched*****
+*****Title Matched*****
+*****Click the Delete Button*****
+*****Click the Delete Button*****
+*****Click the Delete Button*****
+*****Click the Delete Button*****
+*****Click the Delete Button*****
+*****Delete Button Clicked*****
+*****Delete Button Clicked*****
+*****Delete Button Clicked*****
+*****Delete Button Clicked*****
+*****Delete Button Clicked*****
 *****Browser Closed*****
 *****Browser Closed*****
 *****Browser Closed*****

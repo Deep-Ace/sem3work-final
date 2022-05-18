@@ -18,4 +18,3 @@ class LoginPage:
 
     def clickOnCreate(self):
         self.driver.find_element_by_xpath(self.btn_create_xpath).click()
-

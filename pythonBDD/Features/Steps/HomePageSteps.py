@@ -14,7 +14,7 @@ def step_impl(context):
     context.driver.get(baseURL)
     mylogger.info("*****Browser Launched*****")
 
-
+ 
 @then(u'verify the page title')
 def step_impl(context):
     actual_title = context.driver.title
