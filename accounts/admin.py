@@ -4,6 +4,10 @@ from .models import Product
 
 # Registering Product Model
 class ProductAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['excerpt', ]
+
+    def excerpt(self, obj):
+        return obj.get_excerpt(5)
+    # pass
 
 admin.site.register(Product, ProductAdmin) 

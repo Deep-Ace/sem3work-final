@@ -2,7 +2,6 @@ from django.db import models
 
 
 # Create your models here.
-
 class Product(models.Model):
     available_choice = (
         ('In Stock', 'In Stock'),
@@ -17,3 +16,6 @@ class Product(models.Model):
     is_featured = models.BooleanField(default=False)
     def __str__(self):
         return self.name
+
+    def get_excerpt(self, char):
+        return self.name[:char]

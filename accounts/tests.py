@@ -12,6 +12,9 @@ from ecom.views import home, about, contact
 from store.views import store
 
 # Create your tests here.
+# To run tests => python manage.py test
+# You should not have any other file or folder named with tests 
+
 class TestUrls(SimpleTestCase):
     def test_case_register_url(self):
         url=reverse("userRegister")

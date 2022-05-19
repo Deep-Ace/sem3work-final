@@ -11,6 +11,9 @@ from accounts.forms import UserForm, ProductForm
 from django.core.paginator import Paginator
 
 # Create your views here.
+from django.views.generic import TemplateView
+class UserHomeView(TemplateView):
+    template_name = 'accounts/userLogin.html'
 
 def userLogin(request):
     if request.method == 'POST':
